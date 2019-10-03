@@ -281,7 +281,7 @@
 	\renewcommand{\theequation}{\Alph{paper}.\arabic{equation}}%
 	\renewcommand{\thesection}{\arabic{section}}%
 	\setcounter{page}{1}%
-	\setcounter{chapter}{1}%
+	\stepcounter{chapter}%
 %	\global\@topnum\z@%
 %	\@afterindentfalse%
 	\secdef\@paper\@spaper%
