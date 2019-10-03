@@ -1,0 +1,172 @@
+%
+%==============================================================
+% Cover page
+%==============================================================
+
+\thispagestyle{empty} 	% No pagenumbers
+\setlength{\parindent}{0pt} 
+
+\begin{picture}(300,80)
+	\put(0,60){\includegraphics[width=10cm]{TemplateFiles/logos/chalmers_black}} %0,30
+	\put(300,40){\includegraphics[width=3.0cm]{TemplateFiles/logos/chalmers_logo}} %320,0
+\end{picture}
+%
+% IF Cover Page Image  (comment the whole IF-ELSE block if no cover image)
+\ifcoverpageimage
+\begin{figure}[h]
+    \centering 
+    \includegraphics [height=7cm]{\TheCoverPageImage}
+\end{figure}
+\fi
+% END Cover Page Image
+
+\vfill
+{\LARGE\textsc{\CoverPageTitle}\par}
+\vspace{1.7cm}
+{\textsc{\Large\CoverPageName}\par}
+\vspace{1.6cm}
+{\large \textit{Department of Electrical Engineering}\par}
+\vspace{0.1cm}
+{\textsc{CHALMERS UNIVERSITY OF TECHNOLOGY}\par}
+\vspace{0.1cm}
+{\large G\"{o}teborg, Sweden, \TheYear}
+
+\EmptyPage % empty page in the back of cover
+
+%==============================================================
+% Title Page
+%==============================================================
+\thispagestyle{empty}
+
+\begin{center}
+\textsc{thesis for the degree of \TheThesisType}
+\vspace{0.5cm}
+\hrule
+\vspace{3 cm}
+{\Large {\TitlePageTitle}\par}
+\vspace{1 cm}
+{\large\textsc{\TitlePageName}\par} 
+\vspace{2 cm}
+\includegraphics[width=5cm]{TemplateFiles/logos/chalmers_logo_black}
+\vfill
+\vspace{0.5 cm}
+Department of Electrical Engineering \\
+Chalmers University of Technology \\
+G\"{o}teborg, Sweden, \TheYear
+\end{center}
+
+\newpage
+
+%==============================================================
+% ISSN Information
+%==============================================================
+\thispagestyle{empty}
+
+\textbf{\ISSNPageTitle}\\\\
+{\textsc{\ISSNPageName}}
+\vspace{4.0 cm}\\
+Copyright \copyright~\TheYear~\textsc{\ISSNPageName}\\ All rights reserved.\\
+\vspace{1.5 cm}\\
+Technical Report No.~\TheReportNo \\ 
+ISSN \TheISSN\\
+\vspace{1 cm}%
+This thesis has been prepared using \LaTeX.\\
+Department of Electrical Engineering \\
+Chalmers University of Technology \\
+SE-412 96 Göteborg, Sweden \\
+Phone: +46 (0)31 772 1000 \\
+\texttt{www.chalmers.se} \\
+\vfill
+\noindent{Printed by \ThePrinter \\
+Göteborg, Sweden, \TheMonth \TheYear}
+
+\newpage
+
+
+%==============================================================
+% Dedication page
+%==============================================================
+
+\thispagestyle{empty}
+\centerline{ }
+\vspace{1cm}
+
+\centerline{{\small \emph{\TheDedication}}}
+
+\thispagestyle{empty}
+
+\EmptyPage % back side of dedication 
+
+%==============================================================
+% Abstract
+%==============================================================
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+% Reset parindent to original value
+\setlength{\parindent}{1em}
+
+\section*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{YourThesis/Abstract.tex}
+
+\bigskip % This needs to go in its own paragraph -- don't remove blank line above
+% Keywords list, notice first one beigns with capital and the list ends with full stop
+\noindent\textbf{Keywords:} \TheKeyword
+
+\EmptyPageWithNumber % back side of abstract
+
+%==============================================================
+% Publication list
+%==============================================================
+
+\setlength{\parindent}{0pt} 
+
+%To get the proper list of publications:
+% compile the publication in a random tex file (call it mypub.tex)
+% open the bbl file (this is the mypub.bbl)
+% copy the bibitem and paste here
+
+\section*{List of Publications}
+\addcontentsline{toc}{chapter}{List of Papers}
+\input{YourThesis/ListOfPapers.tex}
+
+\setlength{\parindent}{1em}
+
+\EmptyPageWithNumber % back side of publication list
+
+%==============================================================
+% Acknowledgments
+%==============================================================
+
+\section*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{YourThesis/Acknowledgement.tex}
+
+
+
+%==============================================================
+% Acronyms
+%==============================================================
+\section*{Acronyms}
+\vspace{1cm}
+\addcontentsline{toc}{chapter}{Acronyms}
+\input{YourThesis/Acronyms.tex}
+
+%\clearpage
+%\section*{Mathematical symbols}
+%\vspace{1cm}
+%\addcontentsline{toc}{chapter}{Mathematical symbols}
+%\input{parts/symbols}
+
+%==============================================================
+% Table of Contents
+%==============================================================
+\tableofcontents
+\clearpage
+
+\EmptyPage
+
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}

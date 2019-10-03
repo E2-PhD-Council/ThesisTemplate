@@ -1,0 +1,82 @@
+
+%==============================================================
+% DEFAULT PACKAGES (add your own packages at the end...)
+%==============================================================
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}	
+\usepackage[babel,english=american]{csquotes}
+\usepackage[headsepline]{scrpage2} % need for the page headings
+%\usepackage{scrlayer-scrpage} % Would like this instead of scrpage2, but doesn't work.
+\usepackage{scrhack}
+\usepackage[hang,small]{caption} % hang: indent captions. small: smaller text.
+\usepackage[]{datetime}
+\usepackage{amsthm,mathtools}
+\usepackage[]{appendix}
+\usepackage[Sonny]{fncychap}
+\usepackage{bm}
+%\usepackage[framemethod=default]{mdframed}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}	% tables / merge two columns / multicolumn
+\usepackage{color}	
+\usepackage{graphicx}
+\usepackage{xspace} % for the ``space after newcommand'' problem
+
+\definecolor{LinkColor}{rgb}{0,0,0.5}
+\usepackage[
+	pdftitle={Thesis for \TheThesisType}, 
+	pdfauthor={\TheAuthor}, 
+	pdfsubject={\TheTitle}, 
+	pdfcreator={LaTeX},	
+	pdfkeywords={}, 
+	pdfpagemode=UseOutlines, 
+	pdfdisplaydoctitle=true, 
+	pdflang=en, 
+	colorlinks=false,	
+	linkcolor=LinkColor, 
+	citecolor=LinkColor, 
+	filecolor=LinkColor, 
+	urlcolor=LinkColor,
+	menucolor=LinkColor, 
+    bookmarks=true,
+	bookmarksnumbered=true 
+]{hyperref}
+
+
+% Bibliography management
+\usepackage[natbib=true,
+			style=ieee,
+            mincitenames=1,
+            maxcitenames=2,
+            url=false,
+            eprint=false,
+            doi=false]{biblatex}
+\addbibresource{\ReferenceFile} % Reference list for Kappa or Monograph.
+\usepackage{silence}\WarningFilter{biblatex}{File 'english-ieee.lbx'} % this hides an unimportant warning that will be removed in v1.3a (2019-06-19) of biblatex-ieee
+
+\defbibheading{secbib}[\bibname]{%
+  \section*{#1}%
+  \addcontentsline{toc}{section}{\bibname}
+  \markboth{#1}{#1}
+  }
+  
+
+%==============================================================
+% YOUR PACKAGES <<<
+%==============================================================
+
+\usepackage{graphicx,mathtools,amsmath,amssymb,amsfonts, bm, upgreek,acronym,enumerate,setspace,calc,epsf,tabularx,color,geometry,xspace}%
+
+\usepackage{psfrag}
+
+
+% for paper B
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage[export]{adjustbox}
+
+\let\oldemptyset\emptyset                   % replace \emptyset with \varnothing
+\let\emptyset\varnothing
+\DeclareMathOperator*{\argmin}{arg~min}

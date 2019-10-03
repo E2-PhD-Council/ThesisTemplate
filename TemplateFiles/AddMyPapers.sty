@@ -1,0 +1,380 @@
+\newcommand{\LabelPrefix}{}
+\newcommand{\paperlabel}[1]{\label{\LabelPrefix:#1}}
+\newcommand{\addpaper}[1]{
+    \graphicspath{ {YourThesis/papers/PaperTemplate/} }
+    \renewcommand{\LabelPrefix}{#1}
+	\begin{refsection}
+	\input{YourThesis/papers/#1/main}
+	\paperlabel{sec:PaperTemplate}
+    \input{YourThesis/papers/PaperTemplate/content.tex}
+    \printbibliography[heading=secbib]
+	\clearpage
+	\end{refsection}
+}
+
+%%% ----------------------------------------------------------
+%%%
+%%% Copyright   Ulf A. Lindgren
+%%%             Department of Applied Electronics
+%%%             Chalmers University of Technology
+%%%             S-412 96 Gothenburg, Sweden
+%%%             E-mail lindgren@ae.chalmers.se
+%%%
+%%% Note        This file is not for distribution outside the
+%%%             department yet.
+%%%
+%%% Revision    1.0b
+%%%
+%%% Modified    January 9th 1997
+%%%
+%%% ----------------------------------------------------------
+%%%
+%%% Usage       
+%%%
+\NeedsTeXFormat{LaTeX2e}[1995/12/01] % .... This is some old stuff!
+\ProvidesPackage{TemplateFiles/AddMyPapers}[1997/01/07 v1.0b]
+
+\newcommand\papername{Paper}
+\newcounter{paper}
+\renewcommand\thepaper{\Alph{paper}}
+\newcommand{\papermark}[1]{}
+
+\@addtoreset{section}{paper}
+\@addtoreset{equation}{paper}
+\@addtoreset{figure}{paper}
+\@addtoreset{table}{paper}
+%\@addtoreset{proposition}{paper}
+%\@addtoreset{remark}{paper}
+%\@addtoreset{example}{paper}
+\@addtoreset{definition}{paper}
+\@addtoreset{lemma}{paper}
+\@addtoreset{theorem}{paper}
+\@addtoreset{footnote}{paper}
+
+\newcommand{\InitPaperPart}{%  
+  \renewcommand{\thefigure}{\arabic{figure}}
+  \renewcommand{\thetable}{\arabic{table}}
+%  \renewcommand{\theexample}{\arabic{example}}
+%  \renewcommand{\theproposition}{\arabic{proposition}}
+  \renewcommand{\thetheorem}{\arabic{theorem}}
+  \renewcommand{\thedefinition}{\arabic{definition}}
+  \renewcommand{\thelemma}{\arabic{lemma}}
+%  \renewcommand{\theremark}{\arabic{remark}}
+}
+%\renewcommand\@pnumwidth{1.8em}
+
+%\def\articleauthor#1{\def\@author{#1}}
+%\def\articletitle#1{\def\@title{#1}}
+%\def\And{%%                             % \begin{tabular}
+%\end{tabular}\hskip 0.5em \@plus.17fil%
+%\begin{tabular}[t]{c}%% \end{tabular}
+%}
+%\def\affiliation#1{\gdef\@affiliation{#1}} \gdef\@affiliation{}
+%\def\email#1{\gdef\@email{#1}} \gdef\@email{}
+%\def\MyThanks#1{\footnotemark
+%    \protected@xdef\@thanks{\@thanks
+%        \protect\footnotetext[\the\c@footnote]{#1}}%
+%}
+%\let\@thanks\@empty
+
+\def\paperauthor#1{\gdef\@paperauthor{#1}} \gdef\@paperauthor{}
+\def\paperinfo#1{\gdef\@paperinfo{#1}} %\gdef\@paperinfo{}
+
+%\newcommand\makearticletitle{\par
+%  \begingroup
+%  \let \footnote \MyThanks
+%    \renewcommand\thefootnote{\@fnsymbol\c@footnote}%
+%    \def\@makefnmark{\rlap{\@textsuperscript{\normalfont\@thefnmark}}}%
+%    \long\def\@makefntext##1{\parindent 1em\noindent
+%            \hb@xt@1.8em{%
+%                \hss\@textsuperscript{\normalfont\@thefnmark}}##1}%
+%    \if@twocolumn
+%      \ifnum \col@number=\@ne
+%        \@maketitle
+%      \else
+%        \twocolumn[\@maketitle]%
+%      \fi
+%    \else
+%      \newpage
+%      \global\@topnum\z@   % Prevents figures from going at top of page.
+%      \@maketitle
+%    \fi
+%    \thispagestyle{plain}\@thanks
+%  \endgroup
+%  \setcounter{footnote}{0}%
+%%  \global\let\thanks\relax
+%%  \global\let\maketitle\relax
+%%  \global\let\@maketitle\relax
+%   \let\@thanks\@empty
+%%  \global\let\@author\@empty
+%%  \global\let\@date\@empty
+%%  \global\let\@title\@empty
+%%  \global\let\title\relax
+%%  \global\let\author\relax
+%%  \global\let\date\relax
+%%  \global\let\and\relax
+%}
+
+%\newcommand{\Section}[1]{\section{\hskip -1em.~#1}} 
+
+%\def\@maketitle
+%   {
+%   \newpage
+%   \null
+%   \vskip .375in 
+%   \begin{center}\let \footnote \MyThanks
+%      {\Large \bf \@title \par} 
+%      % additional two empty lines at the end of the title 
+%      \vspace*{24pt} 
+%      {
+%      \large 
+%      \lineskip .5em
+%      \begin{tabular}[t]{c}
+%         \@author 
+%      \end{tabular}
+%      \par
+%      } 
+%      % additional small space at the end of the author name 
+%      \vskip .5em 
+%      {
+%       \large 
+%      \begin{tabular}[t]{c}
+%         \@affiliation 
+%      \end{tabular}
+%      \par 
+%      \ifx \@empty \@email
+%      \else
+%         \begin{tabular}{r@{~}l}
+%            E-mail: & {\tt \@email}
+%         \end{tabular}
+%         \par
+%      \fi
+%      }
+%      % additional empty line at the end of the title block 
+%      \vspace*{12pt} 
+%   \end{center}
+%   } 
+
+\renewenvironment{abstract}{%
+	\centerline{\normalsize\textbf{Abstract}}%
+  \vspace*{12pt}%
+	\begin{center}
+		\begin{minipage}{0.8\textwidth}
+}{%
+		\end{minipage}
+	\end{center}
+	\vspace*{12pt} 
+}%
+
+%\def\Abstract
+%   {%  
+%   \centerline{\normalsize\bf Abstract}%
+%   \vspace*{12pt}%
+%   \it%
+%   }
+%
+%\def\endAbstract
+%   {
+%   % additional empty line at the end of the abstract 
+%   \vspace*{12pt} 
+%   }
+
+% The command below will define article, report but it is not done yet
+
+\newif\ifARTICLE
+\ARTICLEfalse
+\newcommand{\refname}{References}
+\newcommand{\DocumentType}{%
+  \renewcommand{\thesection}{\arabic{section}}
+  \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+  \renewcommand{\thefigure}{\arabic{figure}}
+  \renewcommand{\thetable}{\arabic{table}}
+  \ARTICLEtrue
+}%
+
+%\renewenvironment{thebibliography}[1]{%
+%	\ifARTICLE
+%		\typeout{This is an Article}
+%		\section*{\refname}
+%		%\@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}}%
+%	\else
+%		\typeout{This is an Article}
+%		\section*{\refname}
+%		\addcontentsline{toc}{section}{\refname}
+%%		\typeout{This is a Report}
+%%		\chapter*{\bibname}
+%		%\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}%
+%	\fi
+%	\list{\@biblabel{\@arabic\c@enumiv}}%
+%			 {\settowidth\labelwidth{\@biblabel{#1}}%
+%				\leftmargin\labelwidth
+%				\advance\leftmargin\labelsep
+%				\@openbib@code
+%				\usecounter{enumiv}%
+%				\let\p@enumiv\@empty
+%				\renewcommand\theenumiv{\@arabic\c@enumiv}}%
+%	\sloppy\clubpenalty4000\widowpenalty4000%
+%	\sfcode`\.\@m
+%}{%
+%	\def\@noitemerr
+%	 {\@latex@warning{Empty `thebibliography' environment}}%
+%	\endlist
+%}%
+
+
+%\newenvironment{thepaperlist}[1]{%
+%  \typeout{Listing of papers}
+%%  \chapter*{\bibname}
+%        %\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}%
+%      \list{\@biblabel{\@Alph\c@enumiv}}%
+%           {\settowidth\labelwidth{\@biblabel{#1}}%
+%            \leftmargin\labelwidth
+%            \advance\leftmargin\labelsep
+%            \@openbib@code
+%            \usecounter{enumiv}%
+%            \let\p@enumiv\@empty
+%            \renewcommand\theenumiv{\@Alph\c@enumiv}}%
+%      \sloppy\clubpenalty4000\widowpenalty4000%
+%      \sfcode`\.\@m}
+%     {\def\@noitemerr
+%       {\@latex@warning{Empty `thebibliography' environment}}%
+%      \endlist}
+
+%\newenvironment{therestpaperlist}[1]{%
+%  \typeout{Listing of additional papers}
+%%  \chapter*{\bibname}
+%        %\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}%
+%      \list{\@biblabel{\@arabic\c@enumiv}}%
+%           {\settowidth\labelwidth{\@biblabel{#1}}%
+%            \leftmargin\labelwidth
+%            \advance\leftmargin\labelsep
+%            \@openbib@code
+%            \usecounter{enumiv}%
+%            \let\p@enumiv\@empty
+%            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+%      \sloppy\clubpenalty4000\widowpenalty4000%
+%      \sfcode`\.\@m}
+%     {\def\@noitemerr
+%       {\@latex@warning{Empty `thebibliography' environment}}%
+%      \endlist}
+
+\newcommand*\l@paper[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+
+\newcommand\paper{%
+	\if@openright\cleardoublepage\else\clearpage\fi%
+	%\thispagestyle{plain}%
+	\renewcommand{\thepage}{\Alph{paper}\arabic{page}}%
+	\renewcommand{\theequation}{\Alph{paper}.\arabic{equation}}%
+	\renewcommand{\thesection}{\arabic{section}}%
+	\setcounter{page}{1}%
+	\setcounter{chapter}{1}%
+%	\global\@topnum\z@%
+%	\@afterindentfalse%
+	\secdef\@paper\@spaper%
+}%
+
+\def\@paper[#1]#2{%
+	\ifnum \c@secnumdepth >\m@ne%                         
+			 \refstepcounter{paper}%
+			 \typeout{\papername\space\thepaper.}%
+			 \addcontentsline{toc}{chapter}%
+								 {\protect\numberline{\thepaper}#1}%
+	\else%
+		\addcontentsline{toc}{chapter}{#1}%%
+	\fi%
+	
+%	\papermark{#1}%
+%	\addtocontents{lof}{\protect\addvspace{12\p@}}%
+%	\addtocontents{lot}{\protect\addvspace{12\p@}}%
+	\if@twocolumn%
+		\@topnewpage[\@makepaperhead{#2}]%
+	\else%
+		\makepaperhead{#2}%
+		\@afterheading%
+	\fi%
+}%
+
+% prints out the page with all information
+\newcommand\makepaperhead[1]{%
+	\thispagestyle{empty}
+	\vspace*{1.6cm}
+	\begin{flushright}
+		{\bfseries\Large PAPER}\;\resizebox{!}{1.50cm}{\Alph{paper}}%
+		\rlap{\rule{5cm}{1.5cm}}
+
+		\bigskip	
+
+		{\bfseries #1}
+
+		\bigskip
+
+		\@paperauthor
+
+		\vspace{5ex}
+
+		\@paperinfo
+	\end{flushright}
+	\newpage
+	%------------------------------------------------------------------------------------
+	\thispagestyle{empty}
+	\vspace*{60ex}
+	%\copyright ~ 2012 IEEE
+
+	\vspace*{15ex}
+
+	{\small\textit{The layout  has been revised.\\ \vspace{0.2cm}}}
+	\newpage
+}
+
+\def\@makepaperhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+    \vskip 40\p@
+    \rm\huge\raggedleft \papername\space \thepaper
+        \par\nobreak
+        \vskip 40\p@
+    \fi
+    \interlinepenalty\@M
+    \large \bfseries #1\par\nobreak
+    \vskip 10\p@
+  }}
+	
+\def\@spaper#1{%
+	\if@twocolumn%
+		\@topnewpage[\@makespaperhead{#1}]%
+	\else%
+		\@makespaperhead{#1}%
+		\@afterheading%
+	\fi%
+}%
+
+\def\@makespaperhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries  #1\par\nobreak
+    \vskip 40\p@
+  }}
+
+\endinput
+
+
+
+
+
