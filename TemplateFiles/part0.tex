@@ -3,6 +3,10 @@
 % Cover page
 %==============================================================
 
+% Tell hyperref that the first pages without page numbers will
+% not be referred to. Otherwise a warning will be raised.
+\hypersetup{pageanchor=false}
+
 \thispagestyle{empty} 	% No pagenumbers
 \setlength{\parindent}{0pt} 
 
@@ -100,6 +104,10 @@ Göteborg, Sweden, \TheMonth \TheYear}
 %==============================================================
 % Abstract
 %==============================================================
+
+% Now we start numbering the pages, so tell hyperref that pages
+% might be referred to.
+\hypersetup{pageanchor=true}
 
 \pagenumbering{roman}
 \setcounter{page}{1}
