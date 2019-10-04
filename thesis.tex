@@ -81,6 +81,7 @@
 % * Acknowledgement
 % * Table of Contents
 %==============================================================
+\pagestyle{plain.scrheadings}
 \input{TemplateFiles/part0.tex}
 
 
@@ -90,9 +91,14 @@
 %==============================================================
 \setcounter{secnumdepth}{1}
 
+% Use the scrheadings from KOMA-script. Set the even (left page)
+% header to display the chapter title. Odd pages (right page)
+% display the section title.
+\pagestyle{scrheadings}
+\automark[section]{chapter}
+
 \begin{refsection} % Bibliography Marker DNR
 \part{Overview}
-\pagestyle{useheadings}
 \input{YourThesis/Content.tex}
 \printbibliography[title=References]
 \end{refsection}
@@ -106,7 +112,15 @@
 
 \InitPaperPart
 \renewcommand\bibname{References}
-\pagestyle{scrheadings}
+
+% Set the KOMA-script page headers to display Paper A on even
+% (left) pages and section title on odd (right) pages.
+\automark{chapter}
+\renewcommand\sectionmark[1]{\markright{\MakeMarkcase {\thesection\hskip .5em\relax#1}}}
+\rohead{\rightmark}
+\lehead{Paper \Alph{paper}}
+\rofoot{\pagemark}
+\lefoot{\pagemark}
 
 
 
