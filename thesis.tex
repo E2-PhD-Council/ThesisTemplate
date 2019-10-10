@@ -24,6 +24,9 @@
 	open=right,
 ]{scrreprt}
 
+\input{packages}
+\usepackage{TemplateFiles/AddMyPapers}
+
 
 %==============================================================
 % Author details
@@ -56,12 +59,32 @@
 \newcommand{\TheDate}{\TheMonth~\TheYear}
 \newcommand{\ReferenceFile}{YourThesis/references.bib}
 
+\addpaper{PaperTemplate}
+% \addpaper{PaperDummy}
+
 %==============================================================
-% Load all the packages needed -- this must be after author info!
+% Load all the packages needed
 %==============================================================
 %
-\usepackage{TemplateFiles/AddMyPapers}
-\input{packages}
+\usepackage[ % this must be after author info!
+	pdftitle={Thesis for \TheThesisType}, 
+	pdfauthor={\TheAuthor}, 
+	pdfsubject={\TheTitle}, 
+	pdfcreator={LaTeX},	
+	pdfkeywords={}, 
+	pdfpagemode=UseOutlines, 
+	pdfdisplaydoctitle=true, 
+	pdflang=en, 
+	colorlinks=false,	
+	linkcolor=LinkColor, 
+	citecolor=LinkColor, 
+	filecolor=LinkColor, 
+	urlcolor=LinkColor,
+	menucolor=LinkColor, 
+    bookmarks=true,
+	bookmarksnumbered=true 
+]{hyperref}
+\addbibresource{\ReferenceFile} % Reference list for Kappa or Monograph.
 \usepackage{TemplateFiles/ChalmersThesis}
 
 \newcommand{\needref}{\textcolor{red}{(source)}}
@@ -110,7 +133,7 @@
 \part{Papers}
 \setcounter{secnumdepth}{2}
 
-\InitPaperPart
+\initpapers
 \renewcommand\bibname{References}
 
 % Set the KOMA-script page headers to display Paper A on even
@@ -129,9 +152,10 @@
 % ADD YOUR PAPERS HERE: <<<
 %==============================================================
 
+\includepapers
 
-\addpaper{PaperTemplate}
-\addpaper{PaperDummy}
+% \includepaper{PaperTemplate}
+% \includepaper{PaperDummy}
 
 %==============================================================
 % Your Thesis is Done. Congratz!

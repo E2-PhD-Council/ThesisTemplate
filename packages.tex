@@ -22,26 +22,10 @@
 \usepackage{color}	
 \usepackage{graphicx}
 \usepackage{xspace} % for the ``space after newcommand'' problem
+\usepackage{letltxmacro}
+\usepackage{etoolbox}
 
 \definecolor{LinkColor}{rgb}{0,0,0.5}
-\usepackage[
-	pdftitle={Thesis for \TheThesisType}, 
-	pdfauthor={\TheAuthor}, 
-	pdfsubject={\TheTitle}, 
-	pdfcreator={LaTeX},	
-	pdfkeywords={}, 
-	pdfpagemode=UseOutlines, 
-	pdfdisplaydoctitle=true, 
-	pdflang=en, 
-	colorlinks=false,	
-	linkcolor=LinkColor, 
-	citecolor=LinkColor, 
-	filecolor=LinkColor, 
-	urlcolor=LinkColor,
-	menucolor=LinkColor, 
-    bookmarks=true,
-	bookmarksnumbered=true 
-]{hyperref}
 
 
 % Bibliography management
@@ -52,7 +36,6 @@
             url=false,
             eprint=false,
             doi=false]{biblatex}
-\addbibresource{\ReferenceFile} % Reference list for Kappa or Monograph.
 \usepackage{silence}\WarningFilter{biblatex}{File 'english-ieee.lbx'} % this hides an unimportant warning that will be removed in v1.3a (2019-06-19) of biblatex-ieee
 
 \defbibheading{secbib}[\bibname]{%

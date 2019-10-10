@@ -1,12 +1,18 @@
-\usepackage{letltxmacro}
+
+\newcounter{papercounter}
+\newcommand\addpaper[1]{%
+  \stepcounter{papercounter}%
+  \csdef{paper\thepapercounter}{#1}}
 
 \newcommand{\LabelPrefix}{}
 \newcommand{\paperlabel}{\label{sec:\LabelPrefix}}
-\newcommand{\addpaper}[1]{
+\newcommand{\includepaper}[1]{
     \graphicspath{ {YourThesis/papers/#1/} }
     \renewcommand{\LabelPrefix}{#1}
 	\begin{refsection}
-	\input{YourThesis/papers/#1/main}
+	\input{YourThesis/papers/#1/info}
+	\paper[\shortpapertitle]{\longpapertitle}
+	\paperauthor{\paperauthor}
 	\paperlabel
 	% Save the current definition of \label and \ref
 	\LetLtxMacro{\oldlabel}{\label}
@@ -28,6 +34,25 @@
     \LetLtxMacro{\ref}{\oldref}
 	\clearpage
 	\end{refsection}
+}
+\newcommand\getpaper[1]{%
+  \csuse{paper#1}}
+\newcounter{paperindex}
+\newcommand\ListOfPapers{%
+  \setcounter{paperindex}{0}%
+  \whileboolexpr { test {\ifnumcomp{\value{paperindex}}{<}{\thepapercounter}} }
+    {
+        \stepcounter{paperindex}\Alph{paperindex}
+    }
+}
+\newcommand\includepapers{
+  \setcounter{paperindex}{0}%
+  \whileboolexpr { test {\ifnumcomp{\value{paperindex}}{<}{\thepapercounter}} }
+    {
+        \stepcounter{paperindex}
+        \includepaper{\getpaper{\thepaperindex}}]
+    }
+    
 }
 
 %%% ----------------------------------------------------------
@@ -69,7 +94,7 @@
 \@addtoreset{theorem}{paper}
 \@addtoreset{footnote}{paper}
 
-\newcommand{\InitPaperPart}{%  
+\newcommand{\initpapers}{%  
   \renewcommand{\thefigure}{\arabic{figure}}
   \renewcommand{\thetable}{\arabic{table}}
 %  \renewcommand{\theexample}{\arabic{example}}
@@ -95,8 +120,9 @@
 %}
 %\let\@thanks\@empty
 
+\def\papertitle[#1]#2{\gdef\@shortpapertitle{#1}\gdef\@longpapertitle{#2}} %\gdef\@paperinfo{}
 \def\paperauthor#1{\gdef\@paperauthor{#1}} \gdef\@paperauthor{}
-\def\paperinfo#1{\gdef\@paperinfo{#1}} %\gdef\@paperinfo{}
+\def\paperinfo[#1]#2{\gdef\@shortpaperinfo{#1}\gdef\@longpaperinfo{#2}} %\gdef\@paperinfo{}
 
 %\newcommand\makearticletitle{\par
 %  \begingroup
@@ -344,7 +370,7 @@
 
 		\vspace{5ex}
 
-		\@paperinfo
+		\@longpaperinfo
 	\end{flushright}
 	\newpage
 	%------------------------------------------------------------------------------------
