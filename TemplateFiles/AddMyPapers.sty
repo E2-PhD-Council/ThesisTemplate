@@ -1,13 +1,31 @@
+\usepackage{letltxmacro}
+
 \newcommand{\LabelPrefix}{}
-\newcommand{\paperlabel}[1]{\label{\LabelPrefix:#1}}
+\newcommand{\paperlabel}{\label{sec:\LabelPrefix}}
 \newcommand{\addpaper}[1]{
-    \graphicspath{ {YourThesis/papers/PaperTemplate/} }
+    \graphicspath{ {YourThesis/papers/#1/} }
     \renewcommand{\LabelPrefix}{#1}
 	\begin{refsection}
 	\input{YourThesis/papers/#1/main}
-	\paperlabel{sec:PaperTemplate}
-    \input{YourThesis/papers/PaperTemplate/content.tex}
+	\paperlabel
+	% Save the current definition of \label and \ref
+	\LetLtxMacro{\oldlabel}{\label}
+	\LetLtxMacro{\oldref}{\ref}
+	% Redefine \label and \ref to always start with the 
+	% paper name. For instance, if the paper is in folder
+	% DummyPaper, then labels and refs will automatically
+	% start with DummyPaper:. In this way, the same label
+	% can be used in different papers, and still point
+	% to different things. If one wants to refer to
+	% something inside of an appended paper from outside,
+	% then <PaperName>: need to be appended when using \ref.
+	\renewcommand{\label}[1]{\oldlabel{\LabelPrefix:#1}}
+	\renewcommand{\ref}[1]{\oldref{\LabelPrefix:#1}}
+    \input{YourThesis/papers/#1/content.tex}
     \printbibliography[heading=secbib]
+    % Restore \label and \ref to old meaning.
+    \LetLtxMacro{\label}{\oldlabel}
+    \LetLtxMacro{\ref}{\oldref}
 	\clearpage
 	\end{refsection}
 }
@@ -281,7 +299,7 @@
 	\renewcommand{\theequation}{\Alph{paper}.\arabic{equation}}%
 	\renewcommand{\thesection}{\arabic{section}}%
 	\setcounter{page}{1}%
-	\setcounter{chapter}{1}%
+	\stepcounter{chapter}%
 %	\global\@topnum\z@%
 %	\@afterindentfalse%
 	\secdef\@paper\@spaper%

@@ -119,16 +119,6 @@
 \setkomafont{pageheadfoot}{\normalfont\itshape} % Kursive Seitentitel
 \setkomafont{chapter}{\textsc} % Kursive Seitentitel
 
-\clearscrheadfoot
-\automark{chapter}
-\renewcommand\sectionmark[1]{\markright{\MakeMarkcase {\thesection\hskip .5em\relax#1}}}
-%\rohead{\ifnum\expandafter\pdfstrcmp\botmark=0 \rightmark\else\leftmark{} --- \rightmark\fi}
-\rohead{\rightmark}
-\rofoot{\pagemark}
-\lefoot{\pagemark}
-
-\lehead{Paper \Alph{paper}}
-
  %copy+paste from Lotfollah
 %\setlength{\voffset}{-1in}
 %\setlength{\topmargin}{2cm}
