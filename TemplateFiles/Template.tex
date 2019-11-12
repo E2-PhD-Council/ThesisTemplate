@@ -1,3 +1,81 @@
+%==============================================================
+%
+%				Maintainted at
+% 	   https://github.com/primulavulgaris/beginthesis
+%
+%==============================================================
+% document class <<<
+%==============================================================
+%
+%
+\documentclass[
+	paper=16.9cm:23.9cm,
+    %paper=a4,
+	pagesize,
+	twoside,
+	10pt,
+	chapterprefix,
+	headsepline=on,
+	footinclude=off,
+	DIV=18,
+	BCOR=7mm,
+	bibliography=totoc,
+	numbers=noenddot,
+	open=right,
+]{scrreprt}
+
+\input{TemplateFiles/Packages.tex}
+\usepackage{TemplateFiles/AddMyPapers}
+\input{YourThesis/Packages.tex}
+
+
+\input{YourThesis/Config.tex}
+
+
+%==============================================================
+% Load all the packages needed
+%==============================================================
+%
+\usepackage[ % this must be after author info!
+	pdftitle={Thesis for \TheThesisType}, 
+	pdfauthor={\TheAuthor}, 
+	pdfsubject={\TheTitle}, 
+	pdfcreator={LaTeX},	
+	pdfkeywords={}, 
+	pdfpagemode=UseOutlines, 
+	pdfdisplaydoctitle=true, 
+	pdflang=en, 
+	colorlinks=false,	
+	linkcolor=LinkColor, 
+	citecolor=LinkColor, 
+	filecolor=LinkColor, 
+	urlcolor=LinkColor,
+	menucolor=LinkColor, 
+    bookmarks=true,
+	bookmarksnumbered=true 
+]{hyperref}
+\addbibresource{\ReferenceFile} % Reference list for Kappa or Monograph.
+\usepackage{TemplateFiles/ChalmersThesis}
+
+\newcommand{\needref}{\textcolor{red}{(source)}}
+\hyphenation{nit-ri-fic-at-ion de-nit-ri-fic-at-ion bio-de-grad-ab-le re-im-ple-men-ted eu-tro-phi-ca-ti-on LibRAS bio-fil-ter}
+
+
+\begin{document}
+%==============================================================
+% Part 0
+% Includes: 
+% * cover page (temporary) 
+% * Title Page
+% * ISSN Information
+% * Dedication page
+% * Abstract
+% * Publication list
+% * Acknowledgement
+% * Table of Contents
+%==============================================================
+\pagestyle{plain.scrheadings}
+
 %
 %==============================================================
 % Cover page
@@ -19,7 +97,7 @@
 \ifcoverpageimage
 \begin{figure}[h]
     \centering 
-    \includegraphics [height=7cm]{\TheCoverPageImage}
+    \includegraphics [height=6cm]{\TheCoverPageImage}
 \end{figure}
 \fi
 % END Cover Page Image
@@ -33,7 +111,7 @@
 \vspace{0.1cm}
 {\textsc{CHALMERS UNIVERSITY OF TECHNOLOGY}\par}
 \vspace{0.1cm}
-{\large G\"{o}teborg, Sweden, \TheYear}
+{\large Gothenburg, Sweden, \TheYear}
 
 \EmptyPage % empty page in the back of cover
 
@@ -56,7 +134,7 @@
 \vspace{0.5 cm}
 Department of Electrical Engineering \\
 Chalmers University of Technology \\
-G\"{o}teborg, Sweden, \TheYear
+Gothenburg, Sweden, \TheYear
 \end{center}
 
 \newpage
@@ -77,12 +155,12 @@ ISSN \TheISSN\\
 This thesis has been prepared using \LaTeX.\\
 Department of Electrical Engineering \\
 Chalmers University of Technology \\
-SE-412 96 Göteborg, Sweden \\
+SE-412 96 Gothenburg, Sweden \\
 Phone: +46 (0)31 772 1000 \\
 \texttt{www.chalmers.se} \\
 \vfill
 \noindent{Printed by \ThePrinter \\
-Göteborg, Sweden, \TheMonth \TheYear}
+Gothenburg, Sweden, \TheMonth \TheYear}
 
 \newpage
 
@@ -138,7 +216,7 @@ Göteborg, Sweden, \TheMonth \TheYear}
 
 \section*{List of Publications}
 \addcontentsline{toc}{chapter}{List of Papers}
-\input{YourThesis/ListOfPapers.tex}
+\includelistofpapers
 
 \setlength{\parindent}{1em}
 
@@ -178,3 +256,60 @@ Göteborg, Sweden, \TheMonth \TheYear}
 
 \setcounter{page}{1}
 \renewcommand{\thepage}{\arabic{page}}
+
+
+
+
+%==============================================================
+% Part 1 : The overview 
+%==============================================================
+\setcounter{secnumdepth}{1}
+
+% Use the scrheadings from KOMA-script. Set the even (left page)
+% header to display the chapter title. Odd pages (right page)
+% display the section title.
+\pagestyle{scrheadings}
+\automark[section]{chapter}
+
+\begin{refsection} % Bibliography Marker DNR
+\part{Overview}
+\input{YourThesis/Content.tex}
+\printbibliography[title=References]
+\end{refsection}
+
+
+%==============================================================
+% Part 2 : The papers 
+%==============================================================
+\part{Papers}
+\setcounter{secnumdepth}{2}
+
+\initpapers
+\renewcommand\bibname{References}
+
+% Set the KOMA-script page headers to display Paper A on even
+% (left) pages and section title on odd (right) pages.
+\automark{chapter}
+\renewcommand\sectionmark[1]{\markright{\MakeMarkcase {\thesection\hskip .5em\relax#1}}}
+\rohead{\rightmark}
+\lehead{Paper \Alph{paper}}
+\rofoot{\pagemark}
+\lefoot{\pagemark}
+
+
+
+
+%==============================================================
+% ADD YOUR PAPERS HERE: <<<
+%==============================================================
+
+\includepapers
+
+%\includepaper{PaperTemplate}
+%\includepaper{PaperDummy}
+
+%==============================================================
+% Your Thesis is Done. Congratz!
+%==============================================================
+\end{document}
+
