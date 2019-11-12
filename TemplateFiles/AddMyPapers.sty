@@ -1,19 +1,39 @@
 
-\newcounter{papercounter}
-\newcommand\addpaper[1]{%
-  \stepcounter{papercounter}%
-  \csdef{paper\thepapercounter}{#1}}
+\newcounter{papercounter}\renewcommand\thepapercounter{\Alph{papercounter}}
+\newcommand\addpaper[1]{% Creates an array of papers
+    \stepcounter{papercounter}%
+    \csdef{paper\thepapercounter}{#1}
+}
+\newcommand\getpaper[1]{\csuse{paper#1}}
 
+\newcounter{notpapercounter}\renewcommand\thenotpapercounter{\Alph{notpapercounter}}
+\newcommand\addnotincludedpaper[3]{% Creates an array of papers NOT included in thesis
+    \stepcounter{notpapercounter}%
+    \csdef{notpapertitle\thenotpapercounter}{#1}%
+    \csdef{notpaperauthor\thenotpapercounter}{#2}%
+    \csdef{notpaperinfo\thenotpapercounter}{#3}
+}
+
+
+\newcounter{paperindex}\renewcommand\thepaperindex{\Alph{paperindex}} % used to iterate over all papers
+% Commands to include papers in the thesis
+\newcommand\includepapers{
+    \setcounter{paperindex}{0}%
+    \whileboolexpr { test {\ifnumcomp{\value{paperindex}}{<}{\value{papercounter}}} }
+    {
+        \stepcounter{paperindex}
+        \includepaper{\getpaper{\thepaperindex}}
+    }
+}
 \newcommand{\LabelPrefix}{}
-\newcommand{\paperlabel}{\label{sec:\LabelPrefix}}
 \newcommand{\includepaper}[1]{
     \graphicspath{ {YourThesis/papers/#1/} }
-    \renewcommand{\LabelPrefix}{#1}
 	\begin{refsection}
 	\input{YourThesis/papers/#1/info}
-	\paper[\shortpapertitle]{\longpapertitle}
-	\paperauthor{\paperauthor}
-	\paperlabel
+	\paper[\theshortpapertitle]{\thelongpapertitle}
+	%\paperauthor{\thepaperauthor}
+    \renewcommand{\LabelPrefix}{#1}
+	\label{sec:\LabelPrefix}
 	% Save the current definition of \label and \ref
 	\LetLtxMacro{\oldlabel}{\label}
 	\LetLtxMacro{\oldref}{\ref}
@@ -35,25 +55,70 @@
 	\clearpage
 	\end{refsection}
 }
-\newcommand\getpaper[1]{%
-  \csuse{paper#1}}
-\newcounter{paperindex}
-\newcommand\ListOfPapers{%
-  \setcounter{paperindex}{0}%
-  \whileboolexpr { test {\ifnumcomp{\value{paperindex}}{<}{\thepapercounter}} }
-    {
-        \stepcounter{paperindex}\Alph{paperindex}
-    }
-}
-\newcommand\includepapers{
-  \setcounter{paperindex}{0}%
-  \whileboolexpr { test {\ifnumcomp{\value{paperindex}}{<}{\thepapercounter}} }
+
+% Commands to auto generate the list of papers for the preface of the paper
+\newcommand\includelistofpapers{
+    This thesis is based on the following publications:
+    
+    \setcounter{paperindex}{0}%
+    \whileboolexpr { test {\ifnumcomp{\value{paperindex}}{<}{\value{papercounter}}} }
     {
         \stepcounter{paperindex}
-        \includepaper{\getpaper{\thepaperindex}}]
+	    \input{YourThesis/papers/\getpaper{\thepaperindex}/info}
+        
+        \bigskip
+        [\thepaperindex] \thepaperauthor, ``\thelongpapertitle''. \theshortpaperinfo.
+        
+    }
+    
+    \ifnum\value{notpapercounter}>0
+        \newcounter{combinedcounter}\renewcommand\thecombinedcounter{\Alph{combinedcounter}}
+        \setcounter{combinedcounter}{\value{papercounter}}
+    
+        \bigskip
+        Other publications by the author, not included in this thesis, are:
+        
+        \setcounter{paperindex}{0}%
+        \whileboolexpr { test {\ifnumcomp{\value{paperindex}}{<}{\value{notpapercounter}}} }
+        {
+            \stepcounter{paperindex}\stepcounter{combinedcounter}
+            
+    	    \bigskip
+            %\getnotincludedpaper{\thepaperindex}
+            [\thecombinedcounter] 
+            \csuse{notpaperauthor\thepaperindex}, 
+            ``\csuse{notpapertitle\thepaperindex}''. 
+            \csuse{notpaperinfo\thepaperindex}.
+            
+        }
+    \fi
+    
+}
+
+
+% Commands to auto generate a summary of included papers
+\newcommand\includepapersummary{
+    \chapter{Summary of included papers}
+    %
+    This chapter provides a summary of the included papers.
+    
+    \setcounter{paperindex}{0}%
+    \whileboolexpr { test {\ifnumcomp{\value{paperindex}}{<}{\value{papercounter}}} }
+    {
+        \stepcounter{paperindex}
+	    \input{YourThesis/papers/\getpaper{\thepaperindex}/info}
+	    
+	    \section{Paper \thepaperindex}
+        \begin{itemize} \item[] \thepaperauthor \\ \thelongpapertitle \\ \thelongpaperinfo. \end{itemize}
+        
+        \thepapersummary
+        
+        
+        
     }
     
 }
+
 
 %%% ----------------------------------------------------------
 %%%
@@ -120,9 +185,10 @@
 %}
 %\let\@thanks\@empty
 
-\def\papertitle[#1]#2{\gdef\@shortpapertitle{#1}\gdef\@longpapertitle{#2}} %\gdef\@paperinfo{}
-\def\paperauthor#1{\gdef\@paperauthor{#1}} \gdef\@paperauthor{}
-\def\paperinfo[#1]#2{\gdef\@shortpaperinfo{#1}\gdef\@longpaperinfo{#2}} %\gdef\@paperinfo{}
+\def \papertitle [#1]#2{ \gdef \theshortpapertitle{#1} \gdef\thelongpapertitle{#2} }
+\def \paperauthor #1{ \gdef \thepaperauthor{#1} }
+\def \paperinfo [#1]#2{ \gdef \theshortpaperinfo{#1} \gdef\thelongpaperinfo{#2} }
+\def \papersummary #1{ \gdef \thepapersummary{#1} }
 
 %\newcommand\makearticletitle{\par
 %  \begingroup
@@ -366,11 +432,11 @@
 
 		\bigskip
 
-		\@paperauthor
+		\thepaperauthor
 
 		\vspace{5ex}
 
-		\@longpaperinfo
+		\thelongpaperinfo
 	\end{flushright}
 	\newpage
 	%------------------------------------------------------------------------------------
