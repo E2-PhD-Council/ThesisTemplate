@@ -1,0 +1,49 @@
+%==============================================================
+% Thesis details
+%==============================================================
+
+\newcommand{\TheThesisType}{licentiate of engineering}
+\newcommand{\TheAuthor}{Ragnar Lothbrok}
+\newcommand{\TheTitle}{Reliable strategies to become king of Denmark and Sweden} 
+\newcommand{\CoverPageTitle}{Reliable strategies to become king of\\ Denmark and Sweden} % use \\ for new lines
+\newcommand{\TheKeyword}{Keyword, keyword 360, keyword one, keyword one X.} % Keywords list, notice first one begins with capital and the list ends with fullstop
+\newcommand{\TheYear}{855}
+\newcommand{\TheMonth}{April}
+\newcommand{\TheDedication}{To my ducklings Huey, Dewey, and Louie.} % leave it empty if no dedication , then you will get empty page
+\newcommand{\ReferenceFile}{YourThesis/References.bib}
+
+% DO YOU WANT A IMAGE ON THE COVER PAGE?
+% Otherwise, uncomment the third line below.
+\newif\ifcoverpageimage
+\coverpageimagetrue \newcommand{\TheCoverPageImage}{YourThesis/figs/CoverPageImage.pdf}
+%\coverpageimagefalse
+
+% Print info
+\newcommand{\TheReportNo}{1111-111X} % Get it from administration
+\newcommand{\TheISSN}{3.1415-9265} % Get it from administration
+\newcommand{\ThePrinter}{Chalmers Reproservice}
+
+% Following commands can be used to modify the default commands for specific pages
+\newcommand{\CoverPageName}{\expandafter\MakeUppercase\expandafter{\TheAuthor}} % Name in full capitals
+\newcommand{\TitlePageName}{\TheAuthor} 
+\newcommand{\TitlePageTitle}{\TheTitle} % use \\ for new lines
+\newcommand{\ISSNPageName}{\TheAuthor} 
+\newcommand{\ISSNPageTitle}{\TheTitle} % use \\ for new lines
+\newcommand{\TheDate}{\TheMonth~\TheYear}
+
+
+%==============================================================
+% Publications
+%==============================================================
+
+\addpaper{PaperTemplate}
+\addpaper{PaperDummy}
+
+\addnotincludedpaper%
+    {A novel scheme to become the king of Norway}%
+    {H. Finehair, \textbf{R. Lothbrok}, H. Black}%
+    {\textit{Proc. Int. Symp. Border Disputes(ISBD)}, Geneva, Switzerland, Jun. 852}
+\addnotincludedpaper%
+    {F. Vigerdarson, and \textbf{R.~Lothbrok}}%
+    {Why the Asgard should be called Iceland}%
+    {\textit{Proc. European Conference on Heavenly Communication (ECHC)} L\"{o}d\"{o}se, Sep. 855}
