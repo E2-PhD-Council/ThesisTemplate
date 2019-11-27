@@ -45,8 +45,8 @@
 	% to different things. If one wants to refer to
 	% something inside of an appended paper from outside,
 	% then <PaperName>: need to be appended when using \ref.
-	\renewcommand{\label}[1]{\oldlabel{\LabelPrefix:#1}}
-	\renewcommand{\ref}[1]{\oldref{\LabelPrefix:#1}}
+	\renewcommand{\label}[1]{\oldlabel{\LabelPrefix:##1}}
+	\renewcommand{\ref}[1]{\oldref{\LabelPrefix:##1}}
     \input{YourThesis/papers/#1/content.tex}
     \printbibliography[heading=secbib]
     % Restore \label and \ref to old meaning.
