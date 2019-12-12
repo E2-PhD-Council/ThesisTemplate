@@ -1,6 +1,4 @@
-## Only include template files and ignore files that is part of a specific thesis
-YourThesis/*
-
+Thesis.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -244,3 +242,6 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+
+# Possible html renderings
+*.html
