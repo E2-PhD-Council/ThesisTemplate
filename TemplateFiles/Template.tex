@@ -1,7 +1,7 @@
 %==============================================================
 %
-%				Maintainted at
-% 	   https://github.com/primulavulgaris/beginthesis
+%      Maintainted at
+%      https://github.com/E2-PhD-Council/ThesisTemplate
 %
 %==============================================================
 % document class <<<
@@ -9,19 +9,19 @@
 %
 %
 \documentclass[
-	paper=16.9cm:23.9cm,
+  paper=16.9cm:23.9cm,
     %paper=a4,
-	pagesize,
-	twoside,
-	10pt,
-	chapterprefix,
-	headsepline=on,
-	footinclude=off,
-	DIV=18,
-	BCOR=7mm,
-	bibliography=totoc,
-	numbers=noenddot,
-	open=right,
+  pagesize,
+  twoside,
+  10pt,
+  chapterprefix,
+  headsepline=on,
+  footinclude=off,
+  DIV=18,
+  BCOR=7mm,
+  bibliography=totoc,
+  numbers=noenddot,
+  open=right,
 ]{scrreprt}
 
 \input{TemplateFiles/Packages.tex}
@@ -37,22 +37,22 @@
 %==============================================================
 %
 \usepackage[ % this must be after author info!
-	pdftitle={Thesis for \TheThesisType}, 
-	pdfauthor={\TheAuthor}, 
-	pdfsubject={\TheTitle}, 
-	pdfcreator={LaTeX},	
-	pdfkeywords={}, 
-	pdfpagemode=UseOutlines, 
-	pdfdisplaydoctitle=true, 
-	pdflang=en, 
-	colorlinks=false,	
-	linkcolor=LinkColor, 
-	citecolor=LinkColor, 
-	filecolor=LinkColor, 
-	urlcolor=LinkColor,
-	menucolor=LinkColor, 
+  pdftitle={Thesis for \TheThesisType},
+  pdfauthor={\TheAuthor},
+  pdfsubject={\TheTitle},
+  pdfcreator={LaTeX},
+  pdfkeywords={},
+  pdfpagemode=UseOutlines,
+  pdfdisplaydoctitle=true,
+  pdflang=en,
+  colorlinks=false,
+  linkcolor=LinkColor,
+  citecolor=LinkColor,
+  filecolor=LinkColor,
+  urlcolor=LinkColor,
+  menucolor=LinkColor,
     bookmarks=true,
-	bookmarksnumbered=true 
+  bookmarksnumbered=true
 ]{hyperref}
 \addbibresource{\ReferenceFile} % Reference list for Kappa or Monograph.
 \usepackage{TemplateFiles/ChalmersThesis}
@@ -64,8 +64,8 @@
 \begin{document}
 %==============================================================
 % Part 0
-% Includes: 
-% * cover page (temporary) 
+% Includes:
+% * cover page (temporary)
 % * Title Page
 % * ISSN Information
 % * Dedication page
@@ -85,18 +85,18 @@
 % not be referred to. Otherwise a warning will be raised.
 \hypersetup{pageanchor=false}
 
-\thispagestyle{empty} 	% No pagenumbers
-\setlength{\parindent}{0pt} 
+\thispagestyle{empty}   % No pagenumbers
+\setlength{\parindent}{0pt}
 
 \begin{picture}(300,80)
-	\put(0,60){\includegraphics[width=10cm]{TemplateFiles/logos/chalmers_black}} %0,30
-	\put(300,40){\includegraphics[width=3.0cm]{TemplateFiles/logos/chalmers_logo}} %320,0
+  \put(0,60){\includegraphics[width=10cm]{TemplateFiles/logos/chalmers_black}} %0,30
+  \put(300,40){\includegraphics[width=3.0cm]{TemplateFiles/logos/chalmers_logo}} %320,0
 \end{picture}
 %
 % IF Cover Page Image  (comment the whole IF-ELSE block if no cover image)
 \ifcoverpageimage
 \begin{figure}[h]
-    \centering 
+    \centering
     \includegraphics [height=6cm]{\TheCoverPageImage}
 \end{figure}
 \fi
@@ -127,7 +127,7 @@
 \vspace{3 cm}
 {\Large {\TitlePageTitle}\par}
 \vspace{1 cm}
-{\large\textsc{\TitlePageName}\par} 
+{\large\textsc{\TitlePageName}\par}
 \vspace{2 cm}
 \includegraphics[width=5cm]{TemplateFiles/logos/chalmers_logo_black}
 \vfill
@@ -149,7 +149,7 @@ Gothenburg, Sweden, \TheYear
 \vspace{4.0 cm}\\
 Copyright \copyright~\TheYear~\textsc{\ISSNPageName}\\ All rights reserved.\\
 \vspace{1.5 cm}\\
-Technical Report No.~\TheReportNo \\ 
+Technical Report No.~\TheReportNo \\
 ISSN \TheISSN\\
 \vspace{1 cm}%
 This thesis has been prepared using \LaTeX.\\
@@ -177,7 +177,7 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 
 \thispagestyle{empty}
 
-\EmptyPage % back side of dedication 
+\EmptyPage % back side of dedication
 
 %==============================================================
 % Abstract
@@ -207,7 +207,7 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 % Publication list
 %==============================================================
 
-\setlength{\parindent}{0pt} 
+\setlength{\parindent}{0pt}
 
 %To get the proper list of publications:
 % compile the publication in a random tex file (call it mypub.tex)
@@ -261,7 +261,7 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 
 
 %==============================================================
-% Part 1 : The overview 
+% Part 1 : The overview
 %==============================================================
 \setcounter{secnumdepth}{1}
 
@@ -279,7 +279,7 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 
 
 %==============================================================
-% Part 2 : The papers 
+% Part 2 : The papers
 %==============================================================
 \part{Papers}
 \setcounter{secnumdepth}{2}
@@ -312,4 +312,3 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 % Your Thesis is Done. Congratz!
 %==============================================================
 \end{document}
-
