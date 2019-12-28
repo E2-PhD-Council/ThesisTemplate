@@ -37,6 +37,10 @@
 	% Save the current definition of \label and \ref
 	\LetLtxMacro{\oldlabel}{\label}
 	\LetLtxMacro{\oldref}{\ref}
+	\makeatletter%
+	\LetLtxMacro{\oldmathlabel}{\ltx@label}
+	\LetLtxMacro{\oldhyperref}{\label@hyperref}
+	\makeatother%
 	% Redefine \label and \ref to always start with the 
 	% paper name. For instance, if the paper is in folder
 	% DummyPaper, then labels and refs will automatically
@@ -47,11 +51,19 @@
 	% then <PaperName>: need to be appended when using \ref.
 	\renewcommand{\label}[1]{\oldlabel{\LabelPrefix:##1}}
 	\renewcommand{\ref}[1]{\oldref{\LabelPrefix:##1}}
+	\makeatletter%
+	\renewcommand{\ltx@label}[1]{\oldmathlabel{\LabelPrefix:##1}}%
+	\def\label@hyperref[##1]{\oldhyperref[{\LabelPrefix:##1}]}%
+	\makeatother%
     \input{YourThesis/papers/#1/content.tex}
     \printbibliography[heading=secbib]
     % Restore \label and \ref to old meaning.
     \LetLtxMacro{\label}{\oldlabel}
     \LetLtxMacro{\ref}{\oldref}
+    \makeatletter%
+    \LetLtxMacro{\ltx@label}{\oldmathlabel}
+    \LetLtxMacro{\label@hyperref}{\oldhyperref}
+    \makeatother%
 	\clearpage
 	\end{refsection}
 }
