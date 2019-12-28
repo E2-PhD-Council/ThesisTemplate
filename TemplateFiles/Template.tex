@@ -37,9 +37,6 @@
 %==============================================================
 %
 \usepackage[ % this must be after author info!
-	pdftitle={Thesis for \TheThesisType}, 
-	pdfauthor={\TheAuthor}, 
-	pdfsubject={\TheTitle}, 
 	pdfcreator={LaTeX},	
 	pdfkeywords={}, 
 	pdfpagemode=UseOutlines, 
@@ -54,6 +51,17 @@
     bookmarks=true,
 	bookmarksnumbered=true 
 ]{hyperref}
+\pdfstringdefDisableCommands{%
+	% If hard space is used in the title, hyperref will issue warnings.
+	% Warnings from other LaTeX characters can be supressed similarily.
+	% https://tex.stackexchange.com/questions/10555/hyperref-warning-token-not-allowed-in-a-pdf-string
+	\def~{ }%
+}
+\hypersetup{
+	pdftitle={Thesis for \TheThesisType}, 
+	pdfauthor={\TheAuthor}, 
+	pdfsubject={\TheTitle}
+}
 \addbibresource{\ReferenceFile} % Reference list for Kappa or Monograph.
 \usepackage{TemplateFiles/ChalmersThesis}
 
