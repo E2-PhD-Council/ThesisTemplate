@@ -24,9 +24,9 @@ In the [releases](https://github.com/E2-PhD-Council/ThesisTemplate/releases) tab
 
 3. Overleaf template
 
-The template is available with the name `TODO: ADD NAME`.
+The template is available with the name "Chalmers University of Technology E2 Thesis Template".
 
-
+Whenever there is a release in the github repo, we will update the overleaf template.
 
 ## Usage
 The main file of the thesis is `Thesis.tex`, which initiate the template files.
@@ -37,10 +37,6 @@ The only files that should be changed are contained within the folder `YourThesi
 When creating a new thesis, start with `YourThesis/Config.tex` to set up all the general information.
 
 TODO: More thorough intro, also see issues for things to add.
-
-## Versioning
-
-TODO: Versioning policy
 
 ## Contribute
 If you find any bugs or inconsistencies, please open an issue (https://github.com/E2-PhD-Council/ThesisTemplate/issues).
