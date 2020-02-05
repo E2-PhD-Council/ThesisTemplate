@@ -16,7 +16,6 @@ We will do this as quickly as possible, but keep in mind that this is a voluntar
 
 Your contributions must be shared under the same license as that of this repo (MIT).
 
-
 ## Update version on overleaf
 
 There is an overleaf document synced with this repo.

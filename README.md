@@ -38,6 +38,13 @@ When creating a new thesis, start with `YourThesis/Config.tex` to set up all the
 
 TODO: More thorough intro, also see issues for things to add.
 
+### Versioning
+
+We will strive to follow a [semver](https://semver.org/)
+policy by changing major versions whenever breaking changes occur.
+
+However, as long as we are in a 0.x.y version this is not guaranteed.
+
 ## Contribute
 If you find any bugs or inconsistencies, please open an issue (https://github.com/E2-PhD-Council/ThesisTemplate/issues).
 That way we can continue to improve the template and help future colleagues.
