@@ -1,10 +1,20 @@
-# ThesisTemplate
+# Thesis template
 Thesis template(s) for Chalmers E2 PhD students
 
 The current maintainers of this template are:
 
  - Fredrik Hagebring [fredrik.hagebring@chalmers.se](mailto:fredrik.hagebring@chalmers.se)
  - Jakob Lindqvist [jakob.lindqvist@chalmers.se](mailto:jakob.lindqvist@chalmers.se)
+
+## Disclaimer
+
+The intention of the template is to provide an open-source basis for Chalmers PhD students to collaborate on the mundande task of structuring a thesis.
+We strive for compliance with Chalmers official guide lines, but this is not an official Chalmers document and we give no guarantees of compliance.
+
+## Current status
+
+The template has been released to the public but it is in a beta-phase and needs to be tested thoroughly.
+Found a problem or bug? See [below](#Contribute)
 
 ## Get the template
 
@@ -28,6 +38,7 @@ The template is available with the name "Chalmers University of Technology E2 Th
 
 Whenever there is a release in the github repo, we will update the overleaf template.
 
+
 ## Usage
 The main file of the thesis is `Thesis.tex`, which initiate the template files.
 No changes should be made to this file, it is just for easy access.
@@ -44,6 +55,7 @@ We will strive to follow a [semver](https://semver.org/)
 policy by changing major versions whenever breaking changes occur.
 
 However, as long as we are in a 0.x.y version this is not guaranteed.
+
 
 ## Contribute
 If you find any bugs or inconsistencies, please open an issue (https://github.com/E2-PhD-Council/ThesisTemplate/issues).
