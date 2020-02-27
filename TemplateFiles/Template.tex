@@ -23,13 +23,26 @@
   numbers=noenddot,
   open=right,
 ]{scrreprt}
+\usepackage[paperwidth=16.9cm,paperheight=23.9cm]{geometry} % used in cover page
+
 
 \input{TemplateFiles/Packages.tex}
 \usepackage{TemplateFiles/AddMyPapers}
 \input{YourThesis/Packages.tex}
 
-
 \input{YourThesis/Config.tex}
+
+\newcommand{\ThesisTypePhD}{phd}
+\newcommand{\ThesisTypeLic}{lic}
+\ifx \TheThesisType\ThesisTypeLic
+    \newcommand{\TheThesisTypeLong}{Licentiate of Engineering}
+\else
+    \newcommand{\TheThesisTypeLong}{Doctor of Philosophy}
+    \ifx \TheThesisType\ThesisTypePhD
+    \else
+        \PackageError {ThesisTemplate} {Incorrect value of \ThesisType, choose either ``phd`` or ``lic``} {The variable \ThesisType decides on the type of thesis to produce, choose ``phd`` to generate a PhD thesis or ``lic`` to generate a licentiate thesis.}
+    \fi
+\fi
 
 
 %==============================================================
@@ -37,7 +50,7 @@
 %==============================================================
 %
 \usepackage[ % this must be after author info!
-  pdftitle={Thesis for \TheThesisType},
+  pdftitle={Thesis for \TheThesisTypeLong},
   pdfauthor={\TheAuthor},
   pdfsubject={\TheTitle},
   pdfcreator={LaTeX},
@@ -62,6 +75,9 @@
 
 
 \begin{document}
+
+
+
 %==============================================================
 % Part 0
 % Includes:
@@ -81,61 +97,50 @@
 % Cover page
 %==============================================================
 
-% Tell hyperref that the first pages without page numbers will
-% not be referred to. Otherwise a warning will be raised.
-\hypersetup{pageanchor=false}
 
-\thispagestyle{empty}   % No pagenumbers
-\setlength{\parindent}{0pt}
-
-\begin{picture}(300,80)
-  \put(300,40){\includegraphics[width=3.0cm]{TemplateFiles/logos/title_page.jpg}} %320,0
-\end{picture}
-%
-% IF Cover Page Image  (comment the whole IF-ELSE block if no cover image)
-\ifcoverpageimage
-\begin{figure}[h]
-    \centering
-    \includegraphics [height=6cm]{\TheCoverPageImage}
-\end{figure}
-\fi
-% END Cover Page Image
-
-\vfill
-{\LARGE\textsc{\CoverPageTitle}\par}
-\vspace{1.7cm}
-{\textsc{\Large\CoverPageName}\par}
-\vspace{1.6cm}
-{\large \textit{Department of Electrical Engineering}\par}
-\vspace{0.1cm}
-{\textsc{CHALMERS UNIVERSITY OF TECHNOLOGY}\par}
-\vspace{0.1cm}
-{\large Gothenburg, Sweden, \TheYear}
-
-\EmptyPage % empty page in the back of cover
+\eject\pdfpagewidth=34.4cm\newgeometry{margin=0pt}
+\input{TemplateFiles/cover/Chalmers_Cover}
+\eject
+\pdfpagewidth=16.9cm
+\restoregeometry
 
 %==============================================================
 % Title Page
 %==============================================================
 \thispagestyle{empty}
 
-\begin{center}
-\textsc{thesis for the degree of \TheThesisType}
-\vspace{0.5cm}
-\hrule
-\vspace{3 cm}
-{\Large {\TitlePageTitle}\par}
-\vspace{1 cm}
-{\large\textsc{\TitlePageName}\par}
-\vspace{2 cm}
-\includegraphics[scale=0.25]{TemplateFiles/logos/title_page.jpg}
-\vfill
-\vspace{0.5 cm}
-Department of Electrical Engineering \\
-Chalmers University of Technology \\
-Gothenburg, Sweden, \TheYear
-\end{center}
+\noindent\begin{minipage}[t][3cm][t]{\textwidth}
+    \begin{center}
+    \textsc{thesis for the degree of \MakeLowercase\TheThesisTypeLong}
+    \vspace{0.5cm}
+    \hrule
+    \end{center}
+\end{minipage}
 
+\noindent\begin{minipage}[t][4cm][t]{\textwidth}
+    \begin{center}
+    {\LARGE {\TitlePageTitle}\par}
+    \vspace{.2 cm}
+    {\normalsize\textit{\TitlePageSubtitle}\par}
+    \end{center}
+\end{minipage}
+
+\noindent\begin{minipage}{\textwidth}
+    \begin{center}
+    {\large\textsc{\TitlePageName}\par}
+    \end{center}
+\end{minipage}
+
+\noindent\begin{minipage}[b][4cm][t]{\textwidth}
+    \begin{center}
+    \includegraphics[width=5cm]{TemplateFiles/logos/title_page.jpg}
+    \vfill
+    %\vspace{0.5 cm}
+    Department of \TheDepartment \\
+    Chalmers University of Technology \\
+    Gothenburg, Sweden, \TheYear
+    \end{center}
+\end{minipage}
 \newpage
 
 %==============================================================
@@ -143,7 +148,8 @@ Gothenburg, Sweden, \TheYear
 %==============================================================
 \thispagestyle{empty}
 
-\textbf{\ISSNPageTitle}\\\\
+\noindent\textbf{\ISSNPageTitle}\\
+\noindent\footnotesize\textit{\ISSNPageSubitle}\\\\
 {\textsc{\ISSNPageName}}
 \vspace{4.0 cm}\\
 Copyright \copyright~\TheYear~\textsc{\ISSNPageName}\\ All rights reserved.\\
@@ -152,7 +158,7 @@ Technical Report No.~\TheReportNo \\
 ISSN \TheISSN\\
 \vspace{1 cm}%
 This thesis has been prepared using \LaTeX.\\
-Department of Electrical Engineering \\
+Department of \TheDepartment \\
 Chalmers University of Technology \\
 SE-412 96 Gothenburg, Sweden \\
 Phone: +46 (0)31 772 1000 \\
@@ -310,4 +316,5 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 %==============================================================
 % Your Thesis is Done. Congratz!
 %==============================================================
+
 \end{document}
