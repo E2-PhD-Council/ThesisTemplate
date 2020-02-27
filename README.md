@@ -11,12 +11,19 @@ The current maintainers of this template are:
 The intention of the template is to provide an open-source basis for Chalmers PhD students to collaborate on the mundande task of structuring a thesis.
 We strive for compliance with Chalmers official guide lines, but this is not an official Chalmers document and we give no guarantees of compliance.
 
+Currently the guidelines are under revision but will be posted in full here:
+
+- [Licentiate guidelines](https://intranet.chalmers.se/en/tools-support/doctoral-studies-support/licentiate/layout-and-printing-of-licentiate-thesis/)
+- [PhD thesis guidelines](https://intranet.chalmers.se/en/tools-support/doctoral-studies-support/doctoral-thesis-defence/thesis-layout/)
+
 ## Current status
 
 The template has been released to the public but it is in a beta-phase and needs to be tested thoroughly.
 Found a problem or bug? See [below](#Contribute)
 
-## Get the template
+## Usage
+
+### Get the template
 
 1. Using git
 
@@ -38,18 +45,24 @@ The template is available with the name "Chalmers University of Technology E2 Th
 
 Whenever there is a release in the github repo, we will update the overleaf template.
 
-
-## Usage
-The main file of the thesis is `Thesis.tex`, which initiate the template files.
-No changes should be made to this file, it is just for easy access.
+### Template structure
 
 The only files that should be changed are contained within the folder `YourThesis`.
 
 When creating a new thesis, start with `YourThesis/Config.tex` to set up all the general information.
 
-TODO: More thorough intro, also see issues for things to add.
+There are two targets for the template:
 
-### Versioning
+### Cover mock-up
+
+When the thesis is sent for print, the printing service will replace the cover you submit and instead extract info such as name and title and construct their own cover.
+
+### Thesis
+
+The main file of the thesis is `Thesis.tex`, which initiates the template files.
+No changes should be made to this file, it is just for easy access.
+
+## Versioning
 
 We will strive to follow a [semver](https://semver.org/)
 policy by changing major versions whenever breaking changes occur.
