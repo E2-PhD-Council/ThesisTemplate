@@ -11,10 +11,14 @@ The current maintainers of this template are:
 The intention of the template is to provide an open-source basis for Chalmers PhD students to collaborate on the mundande task of structuring a thesis.
 We strive for compliance with Chalmers official guide lines, but this is not an official Chalmers document and we give no guarantees of compliance.
 
-Currently the guidelines are under revision but will be posted in full here:
+The guidelines are available here:
 
 - [Licentiate guidelines](https://intranet.chalmers.se/en/tools-support/doctoral-studies-support/licentiate/layout-and-printing-of-licentiate-thesis/)
 - [PhD thesis guidelines](https://intranet.chalmers.se/en/tools-support/doctoral-studies-support/doctoral-thesis-defence/thesis-layout/)
+
+They are currently under revision but will be posted in full here.
+Our ambition is to stay up to speed with them but if you see any discrepancies please let us know, see [below](#Contribute).
+
 
 ## Current status
 
@@ -51,16 +55,19 @@ The only files that should be changed are contained within the folder `YourThesi
 
 When creating a new thesis, start with `YourThesis/Config.tex` to set up all the general information.
 
-There are two targets for the template:
-
-### Cover mock-up
-
-When the thesis is sent for print, the printing service will replace the cover you submit and instead extract info such as name and title and construct their own cover.
-
-### Thesis
-
 The main file of the thesis is `Thesis.tex`, which initiates the template files.
 No changes should be made to this file, it is just for easy access.
+
+### Mock-up cover
+
+The print service will scrape info like name, title et c. and produce a new cover.
+The template will still generate a mock-up of how the cover for you to get a notion of the layout,
+but note that this is will not be used in the print.
+
+### Title page
+
+This actual page will be used by the print service, therefore you need to make sure to replace the watermarked logo.
+
 
 ## Versioning
 
@@ -71,10 +78,10 @@ However, as long as we are in a 0.x.y version this is not guaranteed.
 
 
 ## Contribute
-If you find any bugs or inconsistencies, please open an issue (https://github.com/E2-PhD-Council/ThesisTemplate/issues).
+If you find any bugs or inconsistencies, please open an issue [here](https://github.com/E2-PhD-Council/ThesisTemplate/issues).
 That way we can continue to improve the template and help future colleagues.
 
 If you also have a solution, please open a pull request and we'll review it as soon as possible.
-Before you do though, please read the `CONTRIBUTOR_GUIDELINES.md`.
+Before you do though, please read the [`CONTRIBUTOR_GUIDELINES.md`](https://github.com/E2-PhD-Council/ThesisTemplate/blob/master/CONTRIBUTOR_GUIDELINES.md).
 
 Want to contribute on a more regular basis? E-mail a maintainer and they'll give you developer priviliges.
