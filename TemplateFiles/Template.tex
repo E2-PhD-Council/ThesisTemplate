@@ -38,12 +38,18 @@
     \newcommand{\TheThesisTypeLong}{Licentiate of Engineering}
 \else
     \newcommand{\TheThesisTypeLong}{Doctor of Philosophy}
-    \ifx \TheThesisType\ThesisTypePhD
-    \else
-        \PackageError {ThesisTemplate} {Incorrect value of \ThesisType, choose either ``phd`` or ``lic``} {The variable \ThesisType decides on the type of thesis to produce, choose ``phd`` to generate a PhD thesis or ``lic`` to generate a licentiate thesis.}
+    \ifx \TheThesisType\ThesisTypePhD \else
+        \PackageError {ThesisTemplate} {Incorrect value of ``ThesisType``, choose either ``phd`` or ``lic``} {The variable ``ThesisType`` decides on the type of thesis to produce, choose ``phd`` to generate a PhD thesis or ``lic`` to generate a licentiate thesis.}
     \fi
 \fi
-
+\ifdefined \TheCoverPageSubtitle \if \TheCoverPageSubtitle\empty\else
+    \ifdefined \TheSubtitle \if \TheSubtitle\empty\else
+        \def\ConsistentSubtitle{true}
+    \fi\fi
+    \ifdefined \ConsistentSubtitle \else
+        \PackageError {ThesisTemplate} {Definition of ``TheCoverPageSubtitle`` and ``TheSubtitle`` is inconsistent} {The variable ``TheCoverPageSubtitle`` can not be non-empty when the variable ``TheSubtitle`` is empty or undefined.}
+    \fi
+\fi\fi
 
 %==============================================================
 % Load all the packages needed
@@ -120,8 +126,10 @@
 \noindent\begin{minipage}[t][4cm][t]{\textwidth}
     \begin{center}
     {\LARGE {\TitlePageTitle}\par}
-    \vspace{.2 cm}
-    {\normalsize\textit{\TitlePageSubtitle}\par}
+    \ifdefined \ISSNPageSubitle \if \ISSNPageSubitle\empty\else
+        \vspace{.2 cm}
+        {\normalsize\textit{\TitlePageSubtitle}\par}
+    \fi\fi
     \end{center}
 \end{minipage}
 
@@ -149,7 +157,9 @@
 \thispagestyle{empty}
 
 \noindent\textbf{\ISSNPageTitle}\\
-\noindent\footnotesize\textit{\ISSNPageSubitle}\\\\
+\ifdefined \ISSNPageSubitle \if \ISSNPageSubitle\empty\else
+    \noindent\footnotesize\textit{\ISSNPageSubitle}\\
+\fi\fi\\
 {\textsc{\ISSNPageName}}
 \vspace{4.0 cm}\\
 Copyright \copyright~\TheYear~\textsc{\ISSNPageName}\\ All rights reserved.\\

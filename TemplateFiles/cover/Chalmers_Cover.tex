@@ -41,8 +41,12 @@
         };
         
         \node (image) at (19.15,-3.7){
-            \ifx \TheCoverImage
-                \includegraphics[width=14cm,height=8cm]{\TheCoverImage}
+            \ifx \TheCoverImage\undefined
+            \else
+                \if \TheCoverImage\empty
+                \else
+                    \includegraphics[width=14cm,height=8cm]{\TheCoverImage}
+                \fi
             \fi
         };
         
@@ -54,11 +58,11 @@
         };
         % Subtitle
         \node (subtitle) at ($ (title.south west) + (0,-.2) $){
-            \ifx \TheCoverPageSubtitle
+            \ifdefined \TheCoverPageSubtitle \if \TheCoverPageSubtitle\empty\else
                 \begin{covertext}{11.5}{11.5}
                     \textit{\TheCoverPageSubtitle}
                 \end{covertext}
-            \fi
+            \fi\fi
         };
             
         % Name
@@ -102,7 +106,8 @@
     \begin{minipage}[t]{14cm}
         %\color[rgb]{0.22,0.22,0.22}
         \fontfamily{phv}\fontsize{9pt}{13}\selectfont
-        \ifx \TheCoverPortrait
+        \ifx \TheCoverPortrait\undefined
+        \else
             \begin{wrapfigure}{l}{5cm}
                 \includegraphics[width=4.7cm]{\TheCoverPortrait}
             \end{wrapfigure}
