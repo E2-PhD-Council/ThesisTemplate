@@ -61,7 +61,7 @@ No changes should be made to this file, it is just for easy access.
 ### Mock-up cover
 
 The print service will scrape info like name, title et c. and produce a new cover.
-The template will still generate a mock-up of how the cover for you to get a notion of the layout,
+The template will still generate a mock-up of the cover for you to get a notion of the layout,
 but note that this is will not be used in the print.
 
 ### Title page
