@@ -1,10 +1,7 @@
 # Thesis template
 Thesis template(s) for Chalmers E2 PhD students
 
-The current maintainers of this template are:
-
- - Fredrik Hagebring [fredrik.hagebring@chalmers.se](mailto:fredrik.hagebring@chalmers.se)
- - Jakob Lindqvist [jakob.lindqvist@chalmers.se](mailto:jakob.lindqvist@chalmers.se)
+Contact: [phd-council.e2@chalmers.se](mailto:phd-council.e2@chalmers.se)
 
 ## Disclaimer
 
@@ -66,7 +63,9 @@ but note that this is will not be used in the print.
 
 ### Title page
 
-This actual page will be used by the print service, therefore you need to make sure to replace the watermarked logo.
+This actual page will be used by the print service. We are trying to have them generate this title page as well
+but until then you need to make sure to replace the watermarked logo yourself.
+Logotypes are found [here](https://www.chalmers.se/en/about-chalmers/profile-and-identity/Pages/logotype.aspx)
 
 
 ## Versioning
