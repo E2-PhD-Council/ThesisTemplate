@@ -2,21 +2,32 @@
 % Thesis details
 %==============================================================
 
-\newcommand{\TheThesisType}{licentiate of engineering}
+\newcommand{\TheThesisType}{lic} % ``lic`` or ``phd``
 \newcommand{\TheAuthor}{Ragnar Lothbrok}
 \newcommand{\TheTitle}{Reliable strategies to become king of Denmark and Sweden} 
-\newcommand{\CoverPageTitle}{Reliable strategies to become king of\\ Denmark and Sweden} % use \\ for new lines
+%\newcommand{\TheSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. Bo. Ic tor sit laboritius incto qui sit, utem eum sae none nis alitas maximperro quae}
+
+% COVER PAGE TITLES
+% * used to explicitly define the layout of the cover page titles, use \\ for new lines
+% * Main title:, maximum three lines, optimal font size 30pt, decrease if title is too long
+% * Sub title: maximum two lines, comment out or leave empty if not needed
+\newcommand{\TheCoverPageTitle}{Reliable strategies to\\ become king of\\ Denmark and Sweden} 
+\newcommand{\TheCoverPageTitleFontSize}{30} % Only decrease if strictly necessary
+\newcommand{\TheCoverPageSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. Bo. Ic tor sit laboritius\\ incto qui sit, utem eum sae none nis alitas maximperro quae} 
+
 \newcommand{\TheKeyword}{Keyword, keyword 360, keyword one, keyword one X.} % Keywords list, notice first one begins with capital and the list ends with fullstop
+
+\newcommand{\TheDepartment}{Electrical Engineering}
 \newcommand{\TheYear}{855}
 \newcommand{\TheMonth}{April}
 \newcommand{\TheDedication}{To my ducklings Huey, Dewey, and Louie.} % leave it empty if no dedication , then you will get empty page
 \newcommand{\ReferenceFile}{YourThesis/References.bib}
 
-% DO YOU WANT A IMAGE ON THE COVER PAGE?
-% Otherwise, uncomment the third line below.
-\newif\ifcoverpageimage
-\coverpageimagetrue \newcommand{\TheCoverPageImage}{YourThesis/figs/CoverPageImage.pdf}
-%\coverpageimagefalse
+% DO YOU WANT IMAGE AND PORTRAIT ON THE COVER?
+% Otherwise just comment out the image that you do not want to use
+%\newcommand{\TheCoverImage}{TemplateFiles/cover/placeholder-image}
+\newcommand{\TheCoverImage}{}
+\newcommand{\TheCoverPortrait}{TemplateFiles/cover/placeholder-portrait}
 
 % Print info
 \newcommand{\TheReportNo}{1111-111X} % Get it from administration
@@ -27,8 +38,10 @@
 \newcommand{\CoverPageName}{\expandafter\MakeUppercase\expandafter{\TheAuthor}} % Name in full capitals
 \newcommand{\TitlePageName}{\TheAuthor} 
 \newcommand{\TitlePageTitle}{\TheTitle} % use \\ for new lines
+%\newcommand{\TitlePageSubtitle}{\TheSubtitle} % use \\ for new lines
 \newcommand{\ISSNPageName}{\TheAuthor} 
 \newcommand{\ISSNPageTitle}{\TheTitle} % use \\ for new lines
+%\newcommand{\ISSNPageSubitle}{\TheSubtitle} % use \\ for new lines
 \newcommand{\TheDate}{\TheMonth~\TheYear}
 
 

@@ -1,0 +1,120 @@
+
+%% REQUIRED PACKAGES:
+%% \usepackage{geography}
+%% \usepackage{graphicx}
+%% \usepackage{color}
+%% \usepackage{tikz}
+%% \usepackage{wrapfig}
+%% \usepackage{amsmath}
+
+\begingroup
+
+    \usetikzlibrary{calc}
+    \usetikzlibrary{positioning}
+    \providecommand\rotatebox[2]{#2}%
+
+    \ifx \TheThesisType\ThesisTypeLic
+        \newcommand{\CoverBackground}{Chalmers_Cover_Lic}
+        \newcommand{\CoverColor}{0.35,0.69,0.886}
+    \else
+        \newcommand{\CoverBackground}{Chalmers_Cover_PhD}
+        \newcommand{\CoverColor}{0.11372549,0.30588235,0.61960784}
+    \fi
+    
+    \newenvironment{covertext}[3][0.22,0.22,0.22]
+        {
+        \begin{minipage}[t]{14cm}
+            \color[rgb]{#1}
+            \fontfamily{phv}\fontsize{#2pt}{#3pt}\selectfont
+        }
+        {\end{minipage}}
+    
+    \noindent
+    \begin{tikzpicture}[
+        remember picture,
+        overlay,
+        anchor=north west,
+        inner sep=0pt
+        ]
+        \node[anchor=center] at ($(current page.east)+(0.3, 0)$){
+            \includegraphics[width=\pdfpagewidth,height=\pdfpageheight]{TemplateFiles/cover/\CoverBackground}
+        };
+        
+        \node (image) at (19.15,-3.7){
+            \ifx \TheCoverImage\undefined
+            \else
+                \if \TheCoverImage\empty
+                \else
+                    \includegraphics[width=14cm,height=8cm]{\TheCoverImage}
+                \fi
+            \fi
+        };
+        
+        % Title
+        \node (title) at ($ (image.north west) + (-.1,-8.5) $){
+            \begin{covertext}{\TheCoverPageTitleFontSize}{\TheCoverPageTitleFontSize}
+                \textbf{\TheCoverPageTitle} 
+            \end{covertext}
+        };
+        % Subtitle
+        \node (subtitle) at ($ (title.south west) + (0,-.2) $){
+            \ifdefined \TheCoverPageSubtitle \if \TheCoverPageSubtitle\empty\else
+                \begin{covertext}{11.5}{11.5}
+                    \textit{\TheCoverPageSubtitle}
+                \end{covertext}
+            \fi\fi
+        };
+            
+        % Name
+        \node (author) at ($ (subtitle.south west) + (0,-1.5) $){
+            \begin{covertext}{13.5}{0}
+                \MakeUppercase{\TheAuthor}
+            \end{covertext}
+        };
+            
+        % Department
+        \node (department) at (19.05,-20.55){
+            \begin{covertext}[\CoverColor]{8}{10}
+                \MakeUppercase{\textbf{DEPARTMENT OF \TheDepartment}}
+            \end{covertext}
+        };
+        
+        \node (contact) at  ($ (department.south west) + (0,-.25) $){
+            \begin{covertext}{8}{10}
+                \MakeUppercase{CHALMERS UNIVERSITY OF TECHNOLOGY}\\
+                Gothenburg, Sweden \TheYear \\
+                \textbf{www.chalmers.se}
+             \end{covertext}
+        };
+        
+        
+        
+        \node (spine) at  (17, -3.7){
+            \begin{covertext}{8}{11}
+                \rotatebox{-90}{
+                    \MakeUppercase{\TheAuthor}$\quad\bullet\quad$\TheTitle$\quad\bullet\quad$\TheYear
+                }
+             \end{covertext}
+        };
+            
+        
+    \end{tikzpicture}
+    
+    % Back side with popular science presentation
+    \vspace{3.5cm}
+    \noindent\hspace{1.45cm}
+    \begin{minipage}[t]{14cm}
+        %\color[rgb]{0.22,0.22,0.22}
+        \fontfamily{phv}\fontsize{9pt}{13}\selectfont
+        \ifx \TheCoverPortrait\undefined
+        \else
+            \begin{wrapfigure}{l}{5cm}
+                \includegraphics[width=4.7cm]{\TheCoverPortrait}
+            \end{wrapfigure}
+        \fi
+        \raggedright
+        \input{YourThesis/PopularScienceSummary}
+    \end{minipage}
+\endgroup
+    
+\clearpage
