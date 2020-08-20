@@ -67,6 +67,24 @@ This actual page will be used by the print service. We are trying to have them g
 but until then you need to make sure to replace the watermarked logo yourself.
 Logotypes are found [here](https://www.chalmers.se/en/about-chalmers/profile-and-identity/Pages/logotype.aspx)
 
+### Referencing
+
+To avoid name clashes for labels in the appended papers the `\includepaper` command automatically prepends a
+prefix with the paper name to all labels in the appended paper. For instance, if the appended paper `DummyPaper`
+is appended with the command `\includepaper{DummyPaper}`, then all labels in that paper gets the prefix
+`DummyPaper:`. So `\label{sec:introduction}` in DummyPaper will get the label `DummyPaper:sec:introduction`.
+Within the appended paper, this prefix should not be used because `\ref` has been redefined to take this prefix
+into account. This works for references to sections, figures, tables, equations and with hyperref. If you use a
+package that does not seem to play nicely with the prefix, add a bug report.
+
+To refer to a label within an appended paper, as said, just use the name of the label. If you want to refer to the label
+from the Kappa, then just prepend the paper name to all references. For instance, the section `\label{sec:introduction}`
+in the paper `DummyPaper` can be referred to from the Kappa by `\ref{DummyPaper:sec:introduction}`.
+
+To refer to a paper with its letter from the Kappa, simply type `\ref{sec:DummyPaper}` if the paper is added with
+`\includepaper{DummyPaper}`. If `DummyPaper` is the first paper to be added, then writing `Paper~\ref{sec:DummyPaper}`
+in the Kappa produces `Paper A`.
+
 
 ## Versioning
 
