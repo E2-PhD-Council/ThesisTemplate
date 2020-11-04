@@ -26,11 +26,20 @@
 \usepackage[paperwidth=16.9cm,paperheight=23.9cm]{geometry} % used in cover page
 
 
+%==============================================================
+% Load all the packages needed
+%==============================================================
+% hyperref comes after author info!
+
 \input{TemplateFiles/Packages.tex}
 \usepackage{TemplateFiles/AddMyPapers}
 \input{YourThesis/Packages.tex}
 
 \input{YourThesis/Config.tex}
+
+%==============================================================
+% Define commands for author info
+%==============================================================
 
 \newcommand{\ThesisTypePhD}{phd}
 \newcommand{\ThesisTypeLic}{lic}
@@ -51,10 +60,11 @@
     \fi
 \fi\fi
 
+
 %==============================================================
-% Load all the packages needed
+% Load and configure hyperref, ChalmersThesis package and Biblatex
 %==============================================================
-%
+
 \usepackage[ % this must be after author info!
 	pdfcreator={LaTeX},	
 	pdfkeywords={}, 
@@ -81,11 +91,13 @@
 	pdfauthor={\TheAuthor}, 
 	pdfsubject={\TheTitle}
 }
+
 \addbibresource{\ReferenceFile} % Reference list for Kappa or Monograph.
 \usepackage{TemplateFiles/ChalmersThesis}
 
 \newcommand{\needref}{\textcolor{red}{(source)}}
 \hyphenation{nit-ri-fic-at-ion de-nit-ri-fic-at-ion bio-de-grad-ab-le re-im-ple-men-ted eu-tro-phi-ca-ti-on LibRAS bio-fil-ter}
+
 
 
 \begin{document}
@@ -284,7 +296,7 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 
 
 %==============================================================
-% Part 1 : The overview
+% Part 1 : The overview - added in YourThesis/Content.tex
 %==============================================================
 \setcounter{secnumdepth}{1}
 
@@ -302,7 +314,7 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 
 
 %==============================================================
-% Part 2 : The papers
+% Part 2 : The papers - added in YourThesis/Config.tex
 %==============================================================
 \part{Papers}
 \setcounter{secnumdepth}{2}
@@ -320,16 +332,9 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 \lefoot{\pagemark}
 
 
-
-
-%==============================================================
-% ADD YOUR PAPERS HERE: <<<
-%==============================================================
-
 \includepapers
 
-%\includepaper{PaperTemplate}
-%\includepaper{PaperDummy}
+
 
 %==============================================================
 % Your Thesis is Done. Congratz!
