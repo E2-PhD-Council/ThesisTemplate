@@ -31,25 +31,9 @@
 \input{YourThesis/Packages.tex}
 
 \input{YourThesis/Config.tex}
+\input{TemplateFiles/ErrorHandling.tex}
 
-\newcommand{\ThesisTypePhD}{phd}
-\newcommand{\ThesisTypeLic}{lic}
-\ifx \TheThesisType\ThesisTypeLic
-    \newcommand{\TheThesisTypeLong}{Licentiate of Engineering}
-\else
-    \newcommand{\TheThesisTypeLong}{Doctor of Philosophy}
-    \ifx \TheThesisType\ThesisTypePhD \else
-        \PackageError {ThesisTemplate} {Incorrect value of ``ThesisType``, choose either ``phd`` or ``lic``} {The variable ``ThesisType`` decides on the type of thesis to produce, choose ``phd`` to generate a PhD thesis or ``lic`` to generate a licentiate thesis.}
-    \fi
-\fi
-\ifdefined \TheCoverPageSubtitle \if \TheCoverPageSubtitle\empty\else
-    \ifdefined \TheSubtitle \if \TheSubtitle\empty\else
-        \def\ConsistentSubtitle{true}
-    \fi\fi
-    \ifdefined \ConsistentSubtitle \else
-        \PackageError {ThesisTemplate} {Definition of ``TheCoverPageSubtitle`` and ``TheSubtitle`` is inconsistent} {The variable ``TheCoverPageSubtitle`` can not be non-empty when the variable ``TheSubtitle`` is empty or undefined.}
-    \fi
-\fi\fi
+
 
 %==============================================================
 % Load all the packages needed
@@ -97,7 +81,7 @@
 % Includes:
 % * cover page (temporary)
 % * Title Page
-% * ISSN Information
+% * Printing Location Page
 % * Dedication page
 % * Abstract
 % * Publication list
@@ -131,27 +115,26 @@
     \end{center}
 \end{minipage}
 
-\noindent\begin{minipage}[t][4cm][t]{\textwidth}
+\noindent\begin{minipage}[t][5cm][t]{\textwidth}
     \begin{center}
-    {\LARGE {\TitlePageTitle}\par}
-    \ifdefined \ISSNPageSubitle \if \ISSNPageSubitle\empty\else
-        \vspace{.2 cm}
-        {\normalsize\textit{\TitlePageSubtitle}\par}
+    {\LARGE {\TheTitlePageTitle}\par}
+    \ifdefined \TheTitlePageSubtitle \if \TheTitlePageSubtitle\empty\else
+        \vspace{1 cm}
+        {\normalsize\textit{\TheTitlePageSubtitle}\par}
     \fi\fi
     \end{center}
 \end{minipage}
 
-\noindent\begin{minipage}{\textwidth}
+\noindent\begin{minipage}[t][4cm][t]{\textwidth}
     \begin{center}
-    {\large\textsc{\TitlePageName}\par}
+    {\large\textsc{\TheTitlePageAuthor}\par}
     \end{center}
 \end{minipage}
 
-\noindent\begin{minipage}[b][4cm][t]{\textwidth}
+\noindent\begin{minipage}[t][4cm][b]{\textwidth}
     \begin{center}
-    \includegraphics[width=5cm]{TemplateFiles/logos/title_page.jpg}
     \vfill
-    %\vspace{0.5 cm}
+    \vspace{5.5 cm}
     Department of \TheDepartment \\
     Chalmers University of Technology \\
     Gothenburg, Sweden, \TheYear
@@ -160,30 +143,33 @@
 \newpage
 
 %==============================================================
-% ISSN Information
+% Printing Location Page
 %==============================================================
 \thispagestyle{empty}
 
-\noindent\textbf{\ISSNPageTitle}\\
-\ifdefined \ISSNPageSubitle \if \ISSNPageSubitle\empty\else
-    \noindent\footnotesize\textit{\ISSNPageSubitle}\\
+\noindent\textbf{\ThePrintingLocationPageTitle}\\
+\ifdefined \ThePrintingLocationPageSubitle \if \ThePrintingLocationPageSubitle\empty\else
+    \noindent{\footnotesize\textit{\ThePrintingLocationPageSubitle}}\\
 \fi\fi\\
-{\textsc{\ISSNPageName}}
-\vspace{4.0 cm}\\
-Copyright \copyright~\TheYear~\textsc{\ISSNPageName}\\ All rights reserved.\\
-\vspace{1.5 cm}\\
-Technical Report No.~\TheReportNo \\
+{\textsc{\ThePrintingLocationPageAuthor}}\\
+ISBN \TheISBN\\
+~\\~\\
+\copyright~\TheYear~\textsc{\ThePrintingLocationPageAuthor}\\ All rights reserved.\\
+~\\~\\
+Doktorsavhandlingar vid Chalmers tekniska högskola\\
+Ny serie nr \TheReportSeries\\
 ISSN \TheISSN\\
-\vspace{1 cm}%
-This thesis has been prepared using \LaTeX.\\
+~\\~\\
 Department of \TheDepartment \\
 Chalmers University of Technology \\
 SE-412 96 Gothenburg, Sweden \\
 Phone: +46 (0)31 772 1000 \\
-\texttt{www.chalmers.se} \\
+
 \vfill
-\noindent{Printed by \ThePrinter \\
-Gothenburg, Sweden, \TheMonth \TheYear}
+\ifdefined \TheCoverImageCaption\ifdefined\TheCoverImage\if\TheCoverImage\empty\else\if\TheCoverImageCaption\empty\else
+    \noindent Cover:\\\TheCoverImageCaption\\~\\
+\fi\fi\fi\fi
+\noindent Printed by \ThePrinter \\Gothenburg, Sweden, \TheMonth~\TheYear
 
 \newpage
 
@@ -209,20 +195,28 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 % Now we start numbering the pages, so tell hyperref that pages
 % might be referred to.
 \hypersetup{pageanchor=true}
-
 \pagenumbering{roman}
 \setcounter{page}{1}
+\setlength{\parindent}{1em} % Reset parindent to original value
 
-% Reset parindent to original value
-\setlength{\parindent}{1em}
-
+% Print the header
+\noindent\textbf{\TheAbstractPageTitle}\\
+\ifdefined \TheAbstractPageSubitle \if \TheAbstractPageSubitle\empty\else
+    \noindent{\footnotesize\textit{\TheAbstractPageSubitle}}\\
+\fi\fi
+{\textsc{\TheAbstractPageAuthor}}\\
+Department of \TheDepartment \\
+Chalmers University of Technology
+\vfill
+%The actual abstract
 \section*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 \input{YourThesis/Abstract.tex}
 
 \bigskip % This needs to go in its own paragraph -- don't remove blank line above
-% Keywords list, notice first one beigns with capital and the list ends with full stop
+% Keywords list, notice first one begins with capital and the list ends with full stop
 \noindent\textbf{Keywords:} \TheKeyword
+\vfill
 
 \EmptyPageWithNumber % back side of abstract
 

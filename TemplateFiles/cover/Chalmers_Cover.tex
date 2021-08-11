@@ -41,13 +41,9 @@
         };
         
         \node (image) at (19.15,-3.7){
-            \ifx \TheCoverImage\undefined
-            \else
-                \if \TheCoverImage\empty
-                \else
+            \ifx\TheCoverImage\undefined\else\if\TheCoverImage\empty\else
                     \includegraphics[width=14cm,height=8cm]{\TheCoverImage}
-                \fi
-            \fi
+            \fi\fi
         };
         
         % Title
