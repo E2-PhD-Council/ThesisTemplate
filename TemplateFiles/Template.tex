@@ -23,7 +23,6 @@
   numbers=noenddot,
   open=right,
 ]{scrreprt}
-\usepackage[paperwidth=16.9cm,paperheight=23.9cm]{geometry} % used in cover page
 
 
 \input{TemplateFiles/Packages.tex}
@@ -52,7 +51,8 @@
 	urlcolor=LinkColor,
 	menucolor=LinkColor, 
   bookmarks=true,
-  bookmarksnumbered=true
+  bookmarksnumbered=true,
+%   plainpages=false
 ]{hyperref}
 \pdfstringdefDisableCommands{%
 	% If hard space is used in the title, hyperref will issue warnings.
@@ -89,6 +89,7 @@
 % * Table of Contents
 %==============================================================
 \pagestyle{plain.scrheadings}
+\hypersetup{pageanchor=false} % Deactivate hyperref pageanchors for the parts not numbered
 
 %
 %==============================================================
