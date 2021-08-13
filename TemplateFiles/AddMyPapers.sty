@@ -153,8 +153,7 @@
 % Executed just before the first paper is included
 % mainly set the style of the counters
 \newcommand{\initpapers}{%
-    \expandafter\addcounters\expandafter{\ThePackageCounters,section,equation,figure,table,proposition,definition,lemma,theorem,footnote}
-    \expandafter\addcounters\expandafter{\ThePackageCounters}
+    \expandafter\addcounters\expandafter{\ThePackageCounters,proposition,definition,lemma,theorem,footnote}
     \renewcommand{\thefigure}{\arabic{figure}}
     \renewcommand{\thetable}{\arabic{table}}
     \renewcommand{\thetheorem}{\arabic{theorem}}
