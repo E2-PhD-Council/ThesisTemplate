@@ -1,4 +1,3 @@
-
 %% REQUIRED PACKAGES:
 %% \usepackage{geography}
 %% \usepackage{graphicx}
@@ -41,8 +40,8 @@
         };
         
         \node (image) at (19.15,-3.7){
-            \ifx\TheCoverImage\undefined\else\if\TheCoverImage\empty\else
-                    \includegraphics[width=14cm,height=8cm]{\TheCoverImage}
+            \ifdefined\TheCoverImage\if\TheCoverImage\empty\else
+                \includegraphics[width=14cm,height=8cm]{\TheCoverImage}
             \fi\fi
         };
         
@@ -54,7 +53,7 @@
         };
         % Subtitle
         \node (subtitle) at ($ (title.south west) + (0,-.2) $){
-            \ifdefined \TheCoverPageSubtitle \if \TheCoverPageSubtitle\empty\else
+            \ifdefined\TheCoverPageSubtitle\if\TheCoverPageSubtitle\empty\else
                 \begin{covertext}{11.5}{11.5}
                     \textit{\TheCoverPageSubtitle}
                 \end{covertext}
@@ -102,12 +101,11 @@
     \begin{minipage}[t]{14cm}
         %\color[rgb]{0.22,0.22,0.22}
         \fontfamily{phv}\fontsize{9pt}{13}\selectfont
-        \ifx \TheCoverPortrait\undefined
-        \else
+        \ifdefined\TheCoverPortrait\if\TheCoverPortrait\empty\else
             \begin{wrapfigure}{l}{5cm}
                 \includegraphics[width=4.7cm]{\TheCoverPortrait}
             \end{wrapfigure}
-        \fi
+        \fi\fi
         \raggedright
         \input{YourThesis/PopularScienceSummary}
     \end{minipage}

@@ -1,4 +1,6 @@
-% Check the thesis type
+%==============================================================
+% Check thesis type
+%==============================================================
 \newcommand{\ThesisTypePhD}{phd}\newcommand{\ThesisTypeLic}{lic}
 \ifx \TheThesisType\ThesisTypeLic
     \newcommand{\TheThesisTypeLong}{Licentiate of Engineering}
@@ -10,9 +12,9 @@
 \fi
 
 
-
-% Check that subtitle variables are consistent
-
+%==============================================================
+% Check subtitle consistency
+%==============================================================
 \ifdefined\TheSubtitle \if\TheSubtitle\empty\else \def\TheSubtitleTrue{true} \fi\fi
 \ifdefined\TheSubtitleTrue\else \ifdefined\TheCoverPageSubtitle \if\TheCoverPageSubtitle\empty\else \def\InconsistentSubtitle{true} \fi\fi\fi
 \ifdefined\TheSubtitleTrue\else \ifdefined\TheTitlePageSubtitle \if\TheTitlePageSubtitle\empty\else \def\InconsistentSubtitle{true} \fi\fi\fi
