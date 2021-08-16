@@ -6,11 +6,8 @@
 %==============================================================
 % document class <<<
 %==============================================================
-%
-%
 \documentclass[
   paper=16.9cm:23.9cm,
-    %paper=a4,
   pagesize,
   twoside,
   10pt,
@@ -21,54 +18,39 @@
   BCOR=7mm,
   bibliography=totoc,
   numbers=noenddot,
-  open=right,
+  open=right
 ]{scrreprt}
-\usepackage[paperwidth=16.9cm,paperheight=23.9cm]{geometry} % used in cover page
 
 
+%==============================================================
+% Load all the packages and settings needed
+%==============================================================
+% hyperref comes after author info!
 \input{TemplateFiles/Packages.tex}
 \usepackage{TemplateFiles/AddMyPapers}
 \input{YourThesis/Packages.tex}
-
 \input{YourThesis/Config.tex}
+\input{TemplateFiles/CheckConfig.tex}
+\usepackage{TemplateFiles/GlobalSettings} % Custom package settings and commands for the template
 
-\newcommand{\ThesisTypePhD}{phd}
-\newcommand{\ThesisTypeLic}{lic}
-\ifx \TheThesisType\ThesisTypeLic
-    \newcommand{\TheThesisTypeLong}{Licentiate of Engineering}
-\else
-    \newcommand{\TheThesisTypeLong}{Doctor of Philosophy}
-    \ifx \TheThesisType\ThesisTypePhD \else
-        \PackageError {ThesisTemplate} {Incorrect value of ``ThesisType``, choose either ``phd`` or ``lic``} {The variable ``ThesisType`` decides on the type of thesis to produce, choose ``phd`` to generate a PhD thesis or ``lic`` to generate a licentiate thesis.}
-    \fi
-\fi
-\ifdefined \TheCoverPageSubtitle \if \TheCoverPageSubtitle\empty\else
-    \ifdefined \TheSubtitle \if \TheSubtitle\empty\else
-        \def\ConsistentSubtitle{true}
-    \fi\fi
-    \ifdefined \ConsistentSubtitle \else
-        \PackageError {ThesisTemplate} {Definition of ``TheCoverPageSubtitle`` and ``TheSubtitle`` is inconsistent} {The variable ``TheCoverPageSubtitle`` can not be non-empty when the variable ``TheSubtitle`` is empty or undefined.}
-    \fi
-\fi\fi
 
 %==============================================================
-% Load all the packages needed
+% Load and configure hyperref and Biblatex
 %==============================================================
-%
 \usepackage[ % this must be after author info!
-	pdfcreator={LaTeX},	
-	pdfkeywords={}, 
-	pdfpagemode=UseOutlines, 
-	pdfdisplaydoctitle=true, 
-	pdflang=en, 
-	colorlinks=false,	
-	linkcolor=LinkColor, 
-	citecolor=LinkColor, 
-	filecolor=LinkColor, 
-	urlcolor=LinkColor,
-	menucolor=LinkColor, 
-  bookmarks=true,
-  bookmarksnumbered=true
+    pdfcreator={LaTeX},	
+    pdfkeywords={}, 
+    pdfpagemode=UseOutlines, 
+    pdfdisplaydoctitle=true, 
+    pdflang=en, 
+    colorlinks=false,	
+    linkcolor=LinkColor, 
+    citecolor=LinkColor, 
+    filecolor=LinkColor, 
+    urlcolor=LinkColor,
+    menucolor=LinkColor, 
+    bookmarks=true,
+    bookmarksnumbered=true
 ]{hyperref}
 \pdfstringdefDisableCommands{%
 	% If hard space is used in the title, hyperref will issue warnings.
@@ -81,15 +63,11 @@
 	pdfauthor={\TheAuthor}, 
 	pdfsubject={\TheTitle}
 }
-\addbibresource{\ReferenceFile} % Reference list for Kappa or Monograph.
-\usepackage{TemplateFiles/ChalmersThesis}
 
-\newcommand{\needref}{\textcolor{red}{(source)}}
-\hyphenation{nit-ri-fic-at-ion de-nit-ri-fic-at-ion bio-de-grad-ab-le re-im-ple-men-ted eu-tro-phi-ca-ti-on LibRAS bio-fil-ter}
-
-
-\begin{document}
-
+% Load all reference files in ``TheReferenceFiles''
+\newcommand\addbibresources[1]{\add@bibresources #1,\relax\noexpand\@eolst}
+\def\add@bibresources #1,#2\@eolst{\addbibresource{#1}\ifx\relax#2\relax\else\add@bibresources #2\@eolst\fi}
+\expandafter\addbibresources\expandafter{\ReferenceFiles} % Files with reference lists.
 
 
 %==============================================================
@@ -97,14 +75,16 @@
 % Includes:
 % * cover page (temporary)
 % * Title Page
-% * ISSN Information
+% * Printing Location Page
 % * Dedication page
 % * Abstract
 % * Publication list
 % * Acknowledgement
 % * Table of Contents
 %==============================================================
+\begin{document}
 \pagestyle{plain.scrheadings}
+\hypersetup{pageanchor=false} % Deactivate hyperref pageanchors for the parts not numbered
 
 %
 %==============================================================
@@ -122,8 +102,9 @@
 % Title Page
 %==============================================================
 \thispagestyle{empty}
+\setlength{\parindent}{0em} % Set the indentation of paragraphs to zero for the first pages
 
-\noindent\begin{minipage}[t][3cm][t]{\textwidth}
+\begin{minipage}[t][3cm][t]{\textwidth}
     \begin{center}
     \textsc{thesis for the degree of \MakeLowercase\TheThesisTypeLong}
     \vspace{0.5cm}
@@ -131,27 +112,26 @@
     \end{center}
 \end{minipage}
 
-\noindent\begin{minipage}[t][4cm][t]{\textwidth}
+\begin{minipage}[t][5cm][t]{\textwidth}
     \begin{center}
-    {\LARGE {\TitlePageTitle}\par}
-    \ifdefined \ISSNPageSubitle \if \ISSNPageSubitle\empty\else
-        \vspace{.2 cm}
-        {\normalsize\textit{\TitlePageSubtitle}\par}
+    {\LARGE {\TheTitlePageTitle}\par}
+    \ifdefined \TheTitlePageSubtitle \if \TheTitlePageSubtitle\empty\else
+        \vspace{1 cm}
+        {\normalsize\textit{\TheTitlePageSubtitle}\par}
     \fi\fi
     \end{center}
 \end{minipage}
 
-\noindent\begin{minipage}{\textwidth}
+\begin{minipage}[t][4cm][t]{\textwidth}
     \begin{center}
-    {\large\textsc{\TitlePageName}\par}
+    {\large\textsc{\TheTitlePageAuthor}\par}
     \end{center}
 \end{minipage}
 
-\noindent\begin{minipage}[b][4cm][t]{\textwidth}
+\begin{minipage}[t][4cm][b]{\textwidth}
     \begin{center}
-    \includegraphics[width=5cm]{TemplateFiles/logos/title_page.jpg}
     \vfill
-    %\vspace{0.5 cm}
+    \vspace{5.5 cm}
     Department of \TheDepartment \\
     Chalmers University of Technology \\
     Gothenburg, Sweden, \TheYear
@@ -160,30 +140,33 @@
 \newpage
 
 %==============================================================
-% ISSN Information
+% Printing Location Page
 %==============================================================
 \thispagestyle{empty}
 
-\noindent\textbf{\ISSNPageTitle}\\
-\ifdefined \ISSNPageSubitle \if \ISSNPageSubitle\empty\else
-    \noindent\footnotesize\textit{\ISSNPageSubitle}\\
+\textbf{\ThePrintingLocationPageTitle}\\
+\ifdefined \ThePrintingLocationPageSubitle \if \ThePrintingLocationPageSubitle\empty\else
+    {\footnotesize\textit{\ThePrintingLocationPageSubitle}}\\
 \fi\fi\\
-{\textsc{\ISSNPageName}}
-\vspace{4.0 cm}\\
-Copyright \copyright~\TheYear~\textsc{\ISSNPageName}\\ All rights reserved.\\
-\vspace{1.5 cm}\\
-Technical Report No.~\TheReportNo \\
+{\textsc{\ThePrintingLocationPageAuthor}}\\
+ISBN \TheISBN\\
+~\\~\\
+\copyright~\TheYear~\textsc{\ThePrintingLocationPageAuthor}\\ All rights reserved.\\
+~\\~\\
+Doktorsavhandlingar vid Chalmers tekniska högskola\\
+Ny serie nr \TheReportSeries\\
 ISSN \TheISSN\\
-\vspace{1 cm}%
-This thesis has been prepared using \LaTeX.\\
+~\\~\\
 Department of \TheDepartment \\
 Chalmers University of Technology \\
 SE-412 96 Gothenburg, Sweden \\
 Phone: +46 (0)31 772 1000 \\
-\texttt{www.chalmers.se} \\
+
 \vfill
-\noindent{Printed by \ThePrinter \\
-Gothenburg, Sweden, \TheMonth \TheYear}
+\ifdefined \TheCoverImageCaption\ifdefined\TheCoverImage\if\TheCoverImage\empty\else\if\TheCoverImageCaption\empty\else
+    Cover:\\\TheCoverImageCaption\\~\\
+\fi\fi\fi\fi
+Printed by \ThePrinter \\Gothenburg, Sweden, \TheMonth~\TheYear
 
 \newpage
 
@@ -191,68 +174,66 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 %==============================================================
 % Dedication page
 %==============================================================
-
-\thispagestyle{empty}
-\centerline{ }
-\vspace{1cm}
-
-\centerline{{\small \emph{\TheDedication}}}
-
-\thispagestyle{empty}
-
-\EmptyPage % back side of dedication
+\ifdefined\TheDedication\if\TheDedication\empty\else
+    \thispagestyle{empty}
+    \centerline{ }
+    \vspace{1cm}
+    \centerline{{\small \emph{\TheDedication}}}
+    \newpage\thispagestyle{empty}\mbox{}\newpage
+\fi\fi
 
 %==============================================================
 % Abstract
 %==============================================================
-
 % Now we start numbering the pages, so tell hyperref that pages
 % might be referred to.
 \hypersetup{pageanchor=true}
-
 \pagenumbering{roman}
 \setcounter{page}{1}
 
-% Reset parindent to original value
-\setlength{\parindent}{1em}
 
+% Print the header
+\textbf{\TheAbstractPageTitle}\\
+\ifdefined \TheAbstractPageSubitle \if \TheAbstractPageSubitle\empty\else
+    {\footnotesize\textit{\TheAbstractPageSubitle}}\\
+\fi\fi
+{\textsc{\TheAbstractPageAuthor}}\\
+Department of \TheDepartment \\
+Chalmers University of Technology
+
+\vfill % set the vertical alignment of the abstract to middle
+
+% Print the abstract
+\setlength{\parindent}{1em} % Reset parindent to original value for the abstract
 \section*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 \input{YourThesis/Abstract.tex}
 
 \bigskip % This needs to go in its own paragraph -- don't remove blank line above
-% Keywords list, notice first one beigns with capital and the list ends with full stop
-\noindent\textbf{Keywords:} \TheKeyword
+% Keywords list, notice first one begins with capital and the list ends with full stop
+\textbf{Keywords:} \TheKeywords
 
-\EmptyPageWithNumber % back side of abstract
+\vfill % set the vertical alignment of the abstract to middle
+
 
 %==============================================================
 % Publication list
 %==============================================================
-
-\setlength{\parindent}{0pt}
-
-%To get the proper list of publications:
-% compile the publication in a random tex file (call it mypub.tex)
-% open the bbl file (this is the mypub.bbl)
-% copy the bibitem and paste here
-
+\cleardoublepage % start on an odd page number
+\setlength{\parindent}{0pt}  % Set the indentation of paragraphs to zero for the list of publications
 \section*{List of Publications}
 \addcontentsline{toc}{chapter}{List of Papers}
 \includelistofpapers
-
 \setlength{\parindent}{1em}
 
-\EmptyPageWithNumber % back side of publication list
 
 %==============================================================
 % Acknowledgments
 %==============================================================
-
+\cleardoublepage % start on an odd page number
 \section*{Acknowledgments}
 \addcontentsline{toc}{chapter}{Acknowledgements}
 \input{YourThesis/Acknowledgement.tex}
-
 
 
 %==============================================================
@@ -263,29 +244,20 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 \addcontentsline{toc}{chapter}{Acronyms}
 \input{YourThesis/Acronyms.tex}
 
-%\clearpage
-%\section*{Mathematical symbols}
-%\vspace{1cm}
-%\addcontentsline{toc}{chapter}{Mathematical symbols}
-%\input{parts/symbols}
 
 %==============================================================
 % Table of Contents
 %==============================================================
+\cleardoublepage % start on an odd page number
 \tableofcontents
-\clearpage
-
-\EmptyPage
-
-\setcounter{page}{1}
-\renewcommand{\thepage}{\arabic{page}}
-
-
 
 
 %==============================================================
 % Part 1 : The overview
 %==============================================================
+\cleardoublepage % start on an odd page number
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
 \setcounter{secnumdepth}{1}
 
 % Use the scrheadings from KOMA-script. Set the even (left page)
@@ -318,21 +290,10 @@ Gothenburg, Sweden, \TheMonth \TheYear}
 \lehead{Paper \Alph{paper}}
 \rofoot{\pagemark}
 \lefoot{\pagemark}
-
-
-
-
-%==============================================================
-% ADD YOUR PAPERS HERE: <<<
-%==============================================================
-
 \includepapers
 
-%\includepaper{PaperTemplate}
-%\includepaper{PaperDummy}
-
 %==============================================================
-% Your Thesis is Done. Congratz!
+% End of template
 %==============================================================
 
 \end{document}

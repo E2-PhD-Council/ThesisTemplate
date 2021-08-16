@@ -6,6 +6,9 @@
 \newcommand{\TheAuthor}{Ragnar Lothbrok}
 \newcommand{\TheTitle}{Reliable strategies to become king of Denmark and Sweden} 
 \newcommand{\TheSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. Bo. Ic tor sit laboritius incto qui sit, utem eum sae none nis alitas maximperro quae}
+% \newcommand{\TheSubtitle}
+\newcommand{\TheKeywords}{Keyword, keyword 360, keyword one, keyword one X.} % Keywords list, notice first one begins with capital and the list ends with fullstop
+
 
 % COVER PAGE TITLES
 % * used to explicitly define the layout of the cover page titles, use \\ for new lines
@@ -13,45 +16,56 @@
 % * Sub title: maximum two lines, comment out or leave empty if not needed
 \newcommand{\TheCoverPageTitle}{Reliable strategies to\\ become king of\\ Denmark and Sweden} 
 \newcommand{\TheCoverPageTitleFontSize}{30} % Only decrease if strictly necessary
-\newcommand{\TheCoverPageSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. Bo. Ic tor sit laboritius\\ incto qui sit, utem eum sae none nis alitas maximperro quae} 
+\newcommand{\TheCoverPageSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. Bo. Ic tor sit laboritius\\ incto qui sit, utem eum sae none nis alitas maximperro quae}
+% COVER PAGE IMAGES
+% Want to remove image or portrait on the cover? Then just remove the corresponding line
+\newcommand{\TheCoverImage}{TemplateFiles/cover/placeholder-image}
+\newcommand{\TheCoverImageCaption}{An explaining legend if there is an illustration on the cover together 
+with a page number in the thesis to read more.} % Added to the printing location page
+\newcommand{\TheCoverPortrait}{TemplateFiles/cover/placeholder-portrait}
 
-\newcommand{\TheKeyword}{Keyword, keyword 360, keyword one, keyword one X.} % Keywords list, notice first one begins with capital and the list ends with fullstop
 
 \newcommand{\TheDepartment}{Electrical Engineering}
 \newcommand{\TheYear}{855}
 \newcommand{\TheMonth}{April}
-\newcommand{\TheDedication}{To my ducklings Huey, Dewey, and Louie.} % leave it empty if no dedication , then you will get empty page
-\newcommand{\ReferenceFile}{YourThesis/References.bib}
+\newcommand{\ReferenceFiles}{YourThesis/References.bib} % can include multiple comma separated files, e.g. {ref1.bib, ref2.bib}
+\newcommand{\TheDedication}{To my ducklings Huey, Dewey, and Louie.} % remove or leave empty if no dedication, then Abstract will start on page 3 instead
 
-% DO YOU WANT IMAGE AND PORTRAIT ON THE COVER?
-% Otherwise just comment out the image that you do not want to use
-%\newcommand{\TheCoverImage}{TemplateFiles/cover/placeholder-image}
-\newcommand{\TheCoverImage}{}
-\newcommand{\TheCoverPortrait}{TemplateFiles/cover/placeholder-portrait}
 
 % Print info
-\newcommand{\TheReportNo}{1111-111X} % Get it from administration
-\newcommand{\TheISSN}{3.1415-9265} % Get it from administration
+\newcommand{\TheISBN}{978-XX-XXXX-XXX-X} % Get it from administration
+\newcommand{\TheReportSeries}{XXXX} % Get it from administration
+\newcommand{\TheISSN}{0346-718X} % Get it from administration
 \newcommand{\ThePrinter}{Chalmers Reproservice}
 
 % Following commands can be used to modify the default commands for specific pages
-\newcommand{\CoverPageName}{\expandafter\MakeUppercase\expandafter{\TheAuthor}} % Name in full capitals
-\newcommand{\TitlePageName}{\TheAuthor} 
-\newcommand{\TitlePageTitle}{\TheTitle} % use \\ for new lines
-%\newcommand{\TitlePageSubtitle}{\TheSubtitle} % use \\ for new lines
-\newcommand{\ISSNPageName}{\TheAuthor} 
-\newcommand{\ISSNPageTitle}{\TheTitle} % use \\ for new lines
-%\newcommand{\ISSNPageSubitle}{\TheSubtitle} % use \\ for new lines
-\newcommand{\TheDate}{\TheMonth~\TheYear}
+\newcommand{\TheCoverPageAuthor}{\expandafter\MakeUppercase\expandafter{\TheAuthor}} % Name in full capitals
+\newcommand{\TheTitlePageAuthor}{\TheAuthor} 
+\newcommand{\TheTitlePageTitle}{\TheTitle} % use \\ for new lines
+\newcommand{\TheTitlePageSubtitle}{\TheSubtitle} % use \\ for new lines
+\newcommand{\ThePrintingLocationPageAuthor}{\TheAuthor} 
+\newcommand{\ThePrintingLocationPageTitle}{\TheTitlePageTitle} % use \\ for new lines
+\newcommand{\ThePrintingLocationPageSubitle}{\TheTitlePageSubtitle} % use \\ for new lines
+\newcommand{\TheAbstractPageAuthor}{\TheAuthor} 
+\newcommand{\TheAbstractPageTitle}{\TheTitlePageTitle} % use \\ for new lines
+\newcommand{\TheAbstractPageSubitle}{\TheTitlePageSubtitle} % use \\ for new lines
 
 
 %==============================================================
 % Publications
 %==============================================================
-
+% Add each paper that should be included in the thesis
 \addpaper{PaperTemplate}
 \addpaper{PaperDummy}
 
+% IMPORTANT! 
+% Add any counter that should be reset in each paper, such as the numbering of theorems, algorithms etc. 
+% This depends on the packages that you include and may differ from thesis to thesis.
+% Already included: section,equation,figure,table,proposition,definition,lemma,theorem,footnote
+% Example: \newcommand{\ThePackageCounters}{algorithm, algocf, ...}
+\newcommand{\ThePackageCounters}{}
+
+% Add any paper that should be included in the list "Other publications..."
 \addnotincludedpaper%
     {A novel scheme to become the king of Norway}%
     {H. Finehair, \textbf{R. Lothbrok}, H. Black}%
@@ -60,3 +74,21 @@
     {F. Vigerdarson, and \textbf{R.~Lothbrok}}%
     {Why the Asgard should be called Iceland}%
     {\textit{Proc. European Conference on Heavenly Communication (ECHC)} L\"{o}d\"{o}se, Sep. 855}
+
+
+%==============================================================
+% Custom commands and configurations (optional)
+%============================================================== 
+% add your custom commands and configurations here   
+\newcommand{\needref}{\textcolor{red}{(source)}}	% Mark missing references in the writing process
+
+\hyphenation{%	Add custom hyphenation
+nit-ri-fic-at-ion %
+de-nit-ri-fic-at-ion %
+bio-de-grad-ab-le %
+re-im-ple-men-ted %
+eu-tro-phi-ca-ti-on %
+LibRAS %
+bio-fil-ter %
+}
+

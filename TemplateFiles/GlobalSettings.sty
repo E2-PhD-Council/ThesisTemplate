@@ -1,8 +1,9 @@
-\ProvidesPackage{TemplateFiles/ChalmersThesis}
-\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf} % Repair some KOMA-Script bullshit
-% >>>
+\ProvidesPackage{TemplateFiles/GlobalSettings}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf} % Repair some KOMA-Script
+
+
 %==============================================================
-% Theorem Style settings <<<
+% Theorem Style settings 
 %==============================================================
 \newtheoremstyle{TheoremCommonStyle}%
 {0pt}%				Space above
@@ -34,6 +35,7 @@
 \newcommand{\acrlabel}[1]{\makebox[3cm][l]{{#1}:}}
 \newenvironment{acronyms}{\begin{list}{}{\renewcommand{\makelabel}{\acrlabel}}}{\end{list}}
 
+
 % =========================================================================================================
 % Appendix styling 
 % =========================================================================================================
@@ -48,7 +50,7 @@
 	\renewcommand\thesubsection{\Alph{section}.\alph{subsection}}
 }
 
-% Deifne what to put in toc for section inside appendix and how to put it
+% Define what to put in toc for section inside appendix and how to put it
 \newcommand{\appendixsection}[1]{
   \addtocontents{toc}{\protect\setcounter{savetocdepth}{\value{tocdepth}}}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
@@ -59,7 +61,7 @@
   \addtocontents{toc}{\protect\setcounter{tocdepth}{\value{savetocdepth}}}
 }
 
-% Deifne what to put in toc for subsection inside appendix and how to put it
+% Define what to put in toc for subsection inside appendix and how to put it
 \newcommand{\appendixsubsection}[1]{
   \addtocontents{toc}{\protect\setcounter{savetocdepth}{\value{tocdepth}}}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
@@ -71,90 +73,15 @@
 }
 
 
-
-% listings
-\definecolor{colKeywords}{rgb}{0,0,1}
-\definecolor{colIdentifier}{rgb}{0,0,0}
-\definecolor{colString}{rgb}{1,0,0}
-\definecolor{colComments}{rgb}{0,0.6,0}
-\definecolor{colNumbers}{rgb}{0.5,0.5,0.5}
-%\lstset{language=Matlab,
-%   keywords={break,case,catch,continue,else,elseif,end,for,function,
-%   global,if,otherwise,persistent,return,switch,try,while,...},
-%   float=hbp,
-%   basicstyle=\ttfamily\footnotesize,
-%   identifierstyle=\color{colIdentifier},
-%   keywordstyle=\color{colKeywords},
-%   commentstyle=\color{colComments},
-%   stringstyle=\color{colString},
-%   numberstyle=\tiny\color{colNumbers},
-%   %columns=flexible,
-%   tabsize=2,
-%   frame=single,
-%   numbers=left,
-%   extendedchars=true,
-%   showspaces=false,
-%   stepnumber=1,
-%   numbersep=10pt,
-%   showstringspaces=false,
-%   breakautoindent=true,
-%	 numberblanklines=true,
-%	 linewidth=1.0\linewidth,
-%	 xleftmargin=0cm
-%}
-
-% >>>
 %==============================================================
-% document settings <<<
+% document settings 
 %==============================================================
-
 \newcommand{\EmptyPage}{\newpage\thispagestyle{empty}\mbox{}\newpage}
-\newcommand{\EmptyPageWithNumber}{\newpage\mbox{}\newpage}
 
 %\raggedbottom
 \renewcommand{\baselinestretch}{1.08}
 \renewcommand{\captionlabelfont}{\bfseries}
 \setlength{\parskip}{0pt}	% verhindert zu hohe Abstände zwischen Absätzen
-%\setlength{\parindent}{0pt} % Absatzeinrückung verhindern
 \setkomafont{pageheadfoot}{\normalfont\itshape} % Kursive Seitentitel
 \setkomafont{chapter}{\textsc} % Kursive Seitentitel
 
- %copy+paste from Lotfollah
-%\setlength{\voffset}{-1in}
-%\setlength{\topmargin}{2cm}
-%\setlength{\headheight}{15pt}
-%\setlength{\textheight}{22.5cm}
-%\setlength{\hoffset}{0mm}
-%\setlength{\oddsidemargin}{5mm}
-%\setlength{\evensidemargin}{5mm}
-%\setlength{\textwidth}{10.5cm}
-%\setlength{\headsep}{1.0cm}
-
-%\headheight15pt           
-%\textheight250mm              % hoehe des textes
-%\textwidth155mm               % breite des textes
-%\topmargin-10mm               % oberer Rand
-%\oddsidemargin6mm            % linker rand bei ungeraden seitenzahlen
-%\evensidemargin6mm           % linker rand bei geraden seitenzahlen
-
-% example \cfoot[for scrplain]{for scrheadings}
-% normal pagestyles (plain, headings) are not affected
-
-%\lhead{Hallo}
-%\cfoot{\pagemark}
-%\rhead{}
-%\lfood{}
-%\cfood{}
-%\rfood{}
-
-% define big operator like \bigotimes
-% http://tex.stackexchange.com/questions/116506/how-are-big-operators-defined
-
-% \scalerel allows to scale a symbol to the size and vertical
-% positioning of another symbol 
-
-\newif\ifhide
-%\hidetrue
-\hidefalse
-
-%\paperfalse

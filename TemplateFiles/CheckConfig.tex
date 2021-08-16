@@ -1,0 +1,25 @@
+%==============================================================
+% Check thesis type
+%==============================================================
+\newcommand{\ThesisTypePhD}{phd}\newcommand{\ThesisTypeLic}{lic}
+\ifx \TheThesisType\ThesisTypeLic
+    \newcommand{\TheThesisTypeLong}{Licentiate of Engineering}
+\else
+    \newcommand{\TheThesisTypeLong}{Doctor of Philosophy}
+    \ifx \TheThesisType\ThesisTypePhD \else
+        \PackageError {ThesisTemplate} {Incorrect value of ``ThesisType``, choose either ``phd`` or ``lic``} {The variable ``ThesisType`` decides on the type of thesis to produce, choose ``phd`` to generate a PhD thesis or ``lic`` to generate a licentiate thesis.}
+    \fi
+\fi
+
+
+%==============================================================
+% Check subtitle consistency
+%==============================================================
+\ifdefined\TheSubtitle \if\TheSubtitle\empty\else \def\TheSubtitleTrue{true} \fi\fi
+\ifdefined\TheSubtitleTrue\else \ifdefined\TheCoverPageSubtitle \if\TheCoverPageSubtitle\empty\else \def\InconsistentSubtitle{true} \fi\fi\fi
+\ifdefined\TheSubtitleTrue\else \ifdefined\TheTitlePageSubtitle \if\TheTitlePageSubtitle\empty\else \def\InconsistentSubtitle{true} \fi\fi\fi
+\ifdefined\TheSubtitleTrue\else \ifdefined\ThePrintLocationPageSubtitle \if\ThePrintLocationPageSubtitle\empty\else \def\InconsistentSubtitle{true} \fi\fi\fi
+\ifdefined\TheSubtitleTrue\else \ifdefined\TheAbstractPageSubtitle \if\TheAbstractPageSubtitle\empty\else \def\InconsistentSubtitle{true} \fi\fi\fi
+\ifdefined\InconsistentSubtitle
+    \PackageError {ThesisTemplate} {Definitions of subtitle variables are inconsistent} {The variables ``TheCoverPageSubtitle``, ``TheTitlePageSubtitle``, ``ThePrintLocationPageSubtitle`` and ``TheAbstractPageSubtitle`` can not be non-empty when the variable ``TheSubtitle`` is empty or undefined.}
+\fi
