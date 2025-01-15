@@ -4,6 +4,7 @@
 \newcommand{\ThesisTypePhD}{phd}\newcommand{\ThesisTypeLic}{lic}
 \ifx \TheThesisType\ThesisTypeLic
     \newcommand{\TheThesisTypeLong}{Licentiate of Engineering}
+    \setboolean{LicentiateContentIncluded}{false}
 \else
     \newcommand{\TheThesisTypeLong}{Doctor of Philosophy}
     \ifx \TheThesisType\ThesisTypePhD \else
