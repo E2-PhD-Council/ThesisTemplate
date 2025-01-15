@@ -127,6 +127,8 @@
         \begin{itemize} \item[] \thepaperauthor \\ \thelongpapertitle \\ \thelongpaperinfo. \end{itemize}
         
         \thepapersummary
+        \\\indent
+        \thepapercontributions
         
         
         
@@ -166,6 +168,7 @@
 \def \paperauthor #1{ \gdef \thepaperauthor{#1} }
 \def \paperinfo [#1]#2{ \gdef \theshortpaperinfo{#1} \gdef\thelongpaperinfo{#2} }
 \def \papersummary #1{ \gdef \thepapersummary{#1} }
+\def \papercontributions #1{ \gdef \thepapercontributions{#1} }
 
 % Defines the style of the abstract
 \renewenvironment{abstract}{%

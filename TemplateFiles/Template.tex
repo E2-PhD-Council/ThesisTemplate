@@ -70,18 +70,6 @@
 \expandafter\addbibresources\expandafter{\ReferenceFiles} % Files with reference lists.
 
 
-%==============================================================
-% Part 0
-% Includes:
-% * cover page (temporary)
-% * Title Page
-% * Printing Location Page
-% * Dedication page
-% * Abstract
-% * Publication list
-% * Acknowledgement
-% * Table of Contents
-%==============================================================
 \begin{document}
 \pagestyle{plain.scrheadings}
 \hypersetup{pageanchor=false} % Deactivate hyperref pageanchors for the parts not numbered
@@ -133,7 +121,7 @@
     \vfill
     \vspace{5.5 cm}
     Department of \TheDepartment \\
-    Chalmers University of Technology \\
+    \textsc{Chalmers University of Technology} \\
     Gothenburg, Sweden, \TheYear
     \end{center}
 \end{minipage}
@@ -151,7 +139,11 @@
 {\textsc{\ThePrintingLocationPageAuthor}}\\
 ISBN \TheISBN\\
 ~\\~\\
-\copyright~\TheYear~\textsc{\ThePrintingLocationPageAuthor}\\ All rights reserved.\\
+Acknowledgements, dedications, and similar personal statements in this thesis, reflect the author's own views.
+~\\~\\
+\copyright~\textsc{\ThePrintingLocationPageAuthor}~\ThePrintingYear\,\,except where otherwise stated.\\ %All rights reserved.\\
+~\\~\\
+\ifthenelse{\boolean{LicentiateContentIncluded}}{Selected material from the author's licentiate thesis: \TheLicentiateThesisRef, is republished in this Ph.D. thesis.}{}
 ~\\~\\
 Doktorsavhandlingar vid Chalmers tekniska högskola\\
 Ny serie nr \TheReportSeries\\
@@ -162,6 +154,14 @@ Chalmers University of Technology \\
 SE-412 96 Gothenburg, Sweden \\
 Phone: +46 (0)31 772 1000 \\
 
+% If the thesis is also part of another series of reports this must be stated on the printing location page. State the organisation responsible for publication (e.g. the name of the university and the university department), the name of the report series, the ISSN and the number of the report.
+
+% It could sometimes also be appropriate on the printing location page to include details of, for example;
+
+% - special funding sources, bodies that have been involved in co-operation and so on.
+% - Captions for any pictures on the cover page.
+% - The names of any photographers or illustrators.
+
 \vfill
 \ifdefined \TheCoverImageCaption\ifdefined\TheCoverImage\if\TheCoverImage\empty\else\if\TheCoverImageCaption\empty\else
     Cover:\\\TheCoverImageCaption\\~\\
@@ -169,18 +169,6 @@ Phone: +46 (0)31 772 1000 \\
 Printed by \ThePrinter \\Gothenburg, Sweden, \TheMonth~\TheYear
 
 \newpage
-
-
-%==============================================================
-% Dedication page
-%==============================================================
-\ifdefined\TheDedication\if\TheDedication\empty\else
-    \thispagestyle{empty}
-    \centerline{ }
-    \vspace{1cm}
-    \centerline{{\small \emph{\TheDedication}}}
-    \newpage\thispagestyle{empty}\mbox{}\newpage
-\fi\fi
 
 %==============================================================
 % Abstract
@@ -203,6 +191,18 @@ Chalmers University of Technology
 
 \vfill % set the vertical alignment of the abstract to middle
 
+% The abstract must:
+
+% - Be written in English.
+% - Contain the name of the thesis, possible subtitle, name of the author, department and 'Chalmers University of Technology'.
+% - If the dissertation is written in Swedish this should also be stated.
+% - Be concise and restrict the length to around 250 words and no more than 350 words.
+% Provide a brief, easily understood overview of the essential content of the thesis (problems, methods, results).
+% - Write in accordance with the international norms for the subject area in question.
+% - Conclude with a maximum of ten key words of significance for computerised information systems.
+% - It must be possible for the abstract to fit on one page. The back (= fourth page) is empty or can have a translation into Swedish of the abstract. The English abstract must be printed both in the thesis and on the back of the loose defence sheet
+% - The abstract must be complete already in the version sent for pre-inspection
+
 % Print the abstract
 \setlength{\parindent}{1em} % Reset parindent to original value for the abstract
 \section*{Abstract}
@@ -215,6 +215,17 @@ Chalmers University of Technology
 
 \vfill % set the vertical alignment of the abstract to middle
 
+%==============================================================
+% Dedication page
+%==============================================================
+\ifdefined\TheDedication\if\TheDedication\empty\else
+    \newpage\thispagestyle{empty}\mbox{}\newpage
+    \thispagestyle{empty}
+    \centerline{ }
+    \vspace{1cm}
+    \centerline{{\small \emph{\TheDedication}}}
+    \newpage\thispagestyle{empty}\mbox{}\newpage
+\fi\fi
 
 %==============================================================
 % Publication list
@@ -226,10 +237,16 @@ Chalmers University of Technology
 \includelistofpapers
 \setlength{\parindent}{1em}
 
+%==============================================================
+% Table of Contents
+%==============================================================
+\cleardoublepage % start on an odd page number
+\tableofcontents
 
 %==============================================================
 % Acknowledgments
 %==============================================================
+% Acknowledgement of funding is mandatory. Other acknowledgements are optional.
 \cleardoublepage % start on an odd page number
 \section*{Acknowledgments}
 \addcontentsline{toc}{chapter}{Acknowledgements}
@@ -245,16 +262,11 @@ Chalmers University of Technology
 \input{YourThesis/Acronyms.tex}
 
 
-%==============================================================
-% Table of Contents
-%==============================================================
-\cleardoublepage % start on an odd page number
-\tableofcontents
-
 
 %==============================================================
-% Part 1 : The overview
+% Part I : The overview
 %==============================================================
+% The recommendation from Chalmers is approximately 50 pages for Part 1.
 \cleardoublepage % start on an odd page number
 \setcounter{page}{1}
 \renewcommand{\thepage}{\arabic{page}}
@@ -274,7 +286,7 @@ Chalmers University of Technology
 
 
 %==============================================================
-% Part 2 : The papers
+% Part II : The papers
 %==============================================================
 \part{Papers}
 \setcounter{secnumdepth}{2}

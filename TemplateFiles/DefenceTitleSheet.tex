@@ -1,0 +1,157 @@
+%==============================================================
+%
+%      Maintainted at
+%      https://github.com/E2-PhD-Council/ThesisTemplate
+%
+%==============================================================
+% document class <<<
+%==============================================================
+% \documentclass[
+%   paper=16.9cm:23.9cm,
+%   pagesize,
+%   twoside,
+%   10pt,
+%   chapterprefix,
+%   headsepline=on,
+%   footinclude=off,
+%   DIV=18,
+%   BCOR=7mm,
+%   bibliography=totoc,
+%   numbers=noenddot,
+%   open=right
+% ]{scrreprt}
+
+\documentclass[
+  9pt,
+  DIV=18,
+  BCOR=7mm,
+  numbers=noenddot,
+  open=right
+]{scrreprt}
+
+
+
+%==============================================================
+% Load all the packages and settings needed
+%==============================================================
+% hyperref comes after author info!
+\input{TemplateFiles/Packages.tex}
+\usepackage{TemplateFiles/AddMyPapers}
+\input{YourThesis/Packages.tex}
+\input{YourThesis/Config.tex}
+\input{TemplateFiles/CheckConfig.tex}
+\usepackage{TemplateFiles/GlobalSettings} % Custom package settings and commands for the template
+
+
+%==============================================================
+% Load and configure hyperref and Biblatex
+%==============================================================
+\usepackage[ % this must be after author info!
+    pdfcreator={LaTeX},	
+    pdfkeywords={}, 
+    pdfpagemode=UseOutlines, 
+    pdfdisplaydoctitle=true, 
+    pdflang=en, 
+    colorlinks=false,	
+    linkcolor=LinkColor, 
+    citecolor=LinkColor, 
+    filecolor=LinkColor, 
+    urlcolor=LinkColor,
+    menucolor=LinkColor, 
+    bookmarks=true,
+    bookmarksnumbered=true
+]{hyperref}
+\pdfstringdefDisableCommands{%
+	% If hard space is used in the title, hyperref will issue warnings.
+	% Warnings from other LaTeX characters can be supressed similarily.
+	% https://tex.stackexchange.com/questions/10555/hyperref-warning-token-not-allowed-in-a-pdf-string
+	\def~{ }%
+}
+
+% \usepackage{geometry}
+\geometry{a5paper, top=10mm, bottom=10mm}
+%==============================================================
+% Part 0
+% Includes:
+% * cover page (temporary)
+% * Title Page
+% * Printing Location Page
+% * Dedication page
+% * Abstract
+% * Publication list
+% * Acknowledgement
+% * Table of Contents
+%==============================================================
+\begin{document}
+% \pagestyle{plain.scrheadings}
+% \hypersetup{pageanchor=false} % Deactivate hyperref pageanchors for the parts not numbered
+
+%==============================================================
+% Title Page
+%==============================================================
+\thispagestyle{empty}
+\setlength{\parindent}{0em} % Set the indentation of paragraphs to zero for the first pages
+
+
+    \begin{minipage}[t][3cm][t]{\textwidth}
+        \centering
+        \includegraphics[width=4cm]{TemplateFiles/logos/logotype.pdf}        
+    \end{minipage}
+
+    \begin{minipage}[t][2.5cm][t]{\textwidth}
+        \begin{center}
+        {\LARGE {\TheTitlePageTitle}\par}
+        \ifdefined \TheTitlePageSubtitle \if \TheTitlePageSubtitle\empty\else
+            \vspace{0.5cm}
+            {\normalsize\textit{\TheTitlePageSubtitle}\par}
+        \fi\fi
+        \end{center}
+    \end{minipage}
+    
+    \begin{minipage}[t][2cm][t]{\textwidth}
+        \begin{center}
+        {\large\textsc{\TheTitlePageAuthor}\par}
+        \end{center}
+    \end{minipage}
+    
+    \begin{minipage}[t][3cm][t]{\textwidth}
+        \begin{center}
+        Thesis to be defended in public on \DefenceMonth{} \DefenceDay{}, \DefenceYear{}, at \DefenceTime{}, in \DefenceSite{}, \DefenceAddress{}, for the Degree of Doctor of Philosophy in \TheSpecialization{} at Chalmers University of Technology. 
+        ~\\~\\
+        The defence will be conducted in English.
+        ~\\~\\
+        Faculty opponent: 
+        ~\\
+        \TheFacultyOpponentTitle, \TheFacultyOpponent
+        ~\\
+        \TheFacultyOpponentUniversity, \TheFacultyOpponentUniversityCity, \TheFacultyOpponentUniversityCountry.
+        \end{center}
+    \end{minipage}
+    
+    \begin{minipage}[t][3cm][t]{\textwidth}
+        \begin{center}
+        \vfill
+        % \vspace{5.5 cm}
+        Department of \TheDepartment \\
+        \textsc{Chalmers University of Technology} \\
+        Gothenburg, Sweden, \TheYear
+        \end{center}
+    \end{minipage}
+
+
+
+    % ======= EMBLEM ============
+    \begin{minipage}[t][4cm][b]{\textwidth}
+        \vfill
+        \begin{center}
+            \includegraphics[width=3cm]{TemplateFiles/logos/emblem.pdf}        
+        \end{center}
+    \end{minipage}
+
+\newpage
+
+%==============================================================
+% End of template
+%==============================================================
+
+\end{document}

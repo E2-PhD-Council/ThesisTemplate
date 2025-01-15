@@ -5,10 +5,25 @@
 \newcommand{\TheThesisType}{phd} % ``lic`` or ``phd``
 \newcommand{\TheAuthor}{Ragnar Lothbrok}
 \newcommand{\TheTitle}{Reliable strategies to become king of Denmark and Sweden} 
-\newcommand{\TheSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. Bo. Ic tor sit laboritius incto qui sit, utem eum sae none nis alitas maximperro quae}
+\newcommand{\TheSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. }
 % \newcommand{\TheSubtitle}
 \newcommand{\TheKeywords}{Keyword, keyword 360, keyword one, keyword one X.} % Keywords list, notice first one begins with capital and the list ends with fullstop
 
+%==============================================================
+% Defence sheet details
+%==============================================================
+\newcommand{\DefenceYear}{885}
+\newcommand{\DefenceMonth}{June}
+\newcommand{\DefenceDay}{6}
+\newcommand{\DefenceTime}{13:15}
+\newcommand{\DefenceSite}{lecture hall HC3}
+\newcommand{\DefenceAddress}{Hörsalsvägen, Gothenburg}
+\newcommand{\TheSpecialization}{Electrical Engineering}
+\newcommand{\TheFacultyOpponentTitle}{Professor}
+\newcommand{\TheFacultyOpponent}{Erik Skötkonung}
+\newcommand{\TheFacultyOpponentUniversity}{Uppsala University}
+\newcommand{\TheFacultyOpponentUniversityCity}{Uppsala}
+\newcommand{\TheFacultyOpponentUniversityCountry}{Sweden}
 
 % COVER PAGE TITLES
 % * used to explicitly define the layout of the cover page titles, use \\ for new lines
@@ -16,7 +31,7 @@
 % * Sub title: maximum two lines, comment out or leave empty if not needed
 \newcommand{\TheCoverPageTitle}{Reliable strategies to\\ become king of\\ Denmark and Sweden} 
 \newcommand{\TheCoverPageTitleFontSize}{30} % Only decrease if strictly necessary
-\newcommand{\TheCoverPageSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. Bo. Ic tor sit laboritius\\ incto qui sit, utem eum sae none nis alitas maximperro quae}
+\newcommand{\TheCoverPageSubtitle}{Abor am qui ipsa poristis ut faccaborum, temporio. }
 % COVER PAGE IMAGES
 % Want to remove image or portrait on the cover? Then just remove the corresponding line
 \newcommand{\TheCoverImage}{TemplateFiles/cover/placeholder-image}
@@ -26,17 +41,22 @@ with a page number in the thesis to read more.} % Added to the printing location
 
 
 \newcommand{\TheDepartment}{Electrical Engineering}
-\newcommand{\TheYear}{855}
+\newcommand{\TheYear}{855} % This is when the thesis is printed, not the year of the PhD defence.
+
 \newcommand{\TheMonth}{April}
 \newcommand{\ReferenceFiles}{YourThesis/References.bib} % can include multiple comma separated files, e.g. {ref1.bib, ref2.bib}
 \newcommand{\TheDedication}{To my ducklings Huey, Dewey, and Louie.} % remove or leave empty if no dedication, then Abstract will start on page 3 instead
 
+\newboolean{LicentiateContentIncluded}
+\setboolean{LicentiateContentIncluded}{true} % Mandatory if material from Licentiate thesis is included (true if such material is included, false otherwise)
+\newcommand{\TheLicentiateThesisRef}{Ragnar Lothbrok, ``Lessons from Kingmaking in Scandinavia: A future outlook'', \textit{War Letters}, Gothenburg, Sweden, Apr. 853}
 
 % Print info
-\newcommand{\TheISBN}{978-XX-XXXX-XXX-X} % Get it from administration
-\newcommand{\TheReportSeries}{XXXX} % Get it from administration
-\newcommand{\TheISSN}{0346-718X} % Get it from administration
-\newcommand{\ThePrinter}{Chalmers Reproservice}
+\newcommand{\TheISBN}{978-XX-XXXX-XXX-X} % Get it from Chalmers Library
+\newcommand{\TheReportSeries}{XXXX} % Get it from Chalmers Library
+\newcommand{\TheISSN}{0346-718X} % Get it from Chalmers Library
+\newcommand{\ThePrinter}{Chalmers Digital Printing}
+\newcommand{\ThePrintingYear}{\TheYear} % % This is when the thesis is printed, not the year of the PhD defence. Observe that printing year and defence year may be different
 
 % Following commands can be used to modify the default commands for specific pages
 \newcommand{\TheCoverPageAuthor}{\expandafter\MakeUppercase\expandafter{\TheAuthor}} % Name in full capitals
