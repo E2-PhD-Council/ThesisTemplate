@@ -1,3 +1,4 @@
+
 # Thesis template
 Thesis template(s) for Chalmers E2 PhD students
 
@@ -40,11 +41,19 @@ will create a local copy of the template repository in `<current-directory>/Thes
 
 In the [releases](https://github.com/E2-PhD-Council/ThesisTemplate/releases) tab, you can access all released versions of the template.
 
-3. Overleaf template
+### Using the template in Overleaf
 
-The template is available with the name "Chalmers University of Technology E2 Thesis Template".
+The template in the Overleaf templates gallery if currently out of date and does not match the template here on GitHub. We are working on getting the Overleaf template updated. In the meantime, do the following to use this template in Overleaf:
 
-Whenever there is a release in the github repo, we will update the overleaf template.
+i) Download the template as .zip according to the instructions above.
+
+ii) On your Overleaf projects page select 'New project > Upload project'. Select or drag in the .zip containing the Thesis template.
+
+iii) In your newly created project, go to 'Menu > Main document' and make sure the main document is set to `Thesis.tex`. If this setting is not set correct there may be issues compiling the project.
+
+Now, the template is ready to be filled with your content.
+
+
 
 ### Template structure
 
@@ -57,14 +66,12 @@ No changes should be made to this file, it is just for easy access.
 
 ### Mock-up cover
 
-The print service will scrape info like name, title et c. and produce a new cover.
-The template will still generate a mock-up of the cover for you to get a notion of the layout,
-but note that this is will not be used in the print.
+The print service will scrape info like name, title etc. and produce a new cover.
+The template will still generate a mock-up of the cover for you to get a notion of the layout, but note that this is will not be used in the print.
 
 ### Title page
 
-This actual page will be used by the print service. We are trying to have them generate this title page as well
-but until then you need to make sure to replace the watermarked logo yourself.
+This actual page will be used by the print service. We are trying to have them generate this title page as well but until then you need to make sure to replace the watermarked logo yourself.
 Logotypes are found [here](https://www.chalmers.se/en/about-chalmers/profile-and-identity/Pages/logotype.aspx)
 
 
