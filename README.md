@@ -9,19 +9,21 @@ Contact: [phd-council.e2@chalmers.se](mailto:phd-council.e2@chalmers.se)
 The intention of the template is to provide an open-source basis for Chalmers PhD students to collaborate on the mundande task of structuring a thesis.
 We strive for compliance with Chalmers official guide lines, but this is not an official Chalmers document and we give no guarantees of compliance.
 
-The guidelines are available here:
+## Guidelines
+The Chalmers thesis guidelines are mandatory for all PhD students. Do not use thesis templates distributed amongst students, and be aware that you yourself are responsible for following the guidelines. This template strives to be the most up to date template for E2 students, but there is a delay before we are made aware of guideline changes.
+
+The guidelines are available on the Chalmers intranet:
 
 - [Licentiate guidelines](https://intranet.chalmers.se/en/tools-support/doctoral-studies-support/licentiate/layout-and-printing-of-licentiate-thesis/)
 - [PhD thesis guidelines](https://intranet.chalmers.se/en/tools-support/doctoral-studies-support/doctoral-thesis-defence/thesis-layout/)
 
-They are currently under revision but will be posted in full here.
-Our ambition is to stay up to speed with them but if you see any discrepancies please let us know, see [below](#Contribute).
+
+The guidelines are always changing, and you must consult the above links. Our ambition is to stay up to speed with them but if you see any discrepancies please let us know, see [below](#Contribute).
 
 
 ## Current status
 
-The template has been released to the public but it is in a beta-phase and needs to be tested thoroughly.
-Found a problem or bug? See [below](#Contribute)
+The template is maintained, but no drastic changes are planned. See [below](#Contribute)
 
 ## Usage
 
@@ -43,13 +45,13 @@ In the [releases](https://github.com/E2-PhD-Council/ThesisTemplate/releases) tab
 
 ### Using the template in Overleaf
 
-The template in the Overleaf templates gallery if currently out of date and does not match the template here on GitHub. We are working on getting the Overleaf template updated. In the meantime, do the following to use this template in Overleaf:
+Any template on in the Overleaf template gallery is inofficial and not supported.  Do the following to use this template in Overleaf:
 
 i) Download the template as .zip according to the instructions above.
 
 ii) On your Overleaf projects page select 'New project > Upload project'. Select or drag in the .zip containing the Thesis template.
 
-iii) In your newly created project, go to 'Menu > Main document' and make sure the main document is set to `Thesis.tex`. If this setting is not set correct there may be issues compiling the project.
+iii) In your newly created project, go to 'Settings  > Compiler > Main document' and make sure the main document is set to `Thesis.tex`. If this setting is not set correct there may be issues compiling the project, or you may commonly only see the defence sheet.
 
 Now, the template is ready to be filled with your content.
 
